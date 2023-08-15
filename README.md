@@ -8,6 +8,8 @@ The following is a set of guidelines for contributing to the [translated content
 
 ## Locales
 
+
+
 Before we go any further, you should be aware that we are only accepting updates to active locales — this means locales that have active community maintenance teams in place to review PRs, fix issues, make updates, etc. Currently the list of active locales is:
 
 - `fr`
