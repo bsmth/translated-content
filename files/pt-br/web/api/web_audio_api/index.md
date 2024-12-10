@@ -184,7 +184,7 @@ Antes da definição dos worklets de áudio, a API de áudio da Web usava o `Scr
 
 ## Guias e tutoriais
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## Exemplos
 

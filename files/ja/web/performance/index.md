@@ -15,7 +15,7 @@ l10n:
 
 ## キーパフォーマンスガイド
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## 初心者向けチュートリアル
 

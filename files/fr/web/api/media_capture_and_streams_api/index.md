@@ -56,7 +56,7 @@ Les premières versions de la spécification pour Media Capture and Streams API 
 
 Les articles qui suivent fournissent des manuels et guides pour utiliser cette API et réaliser des certaines tâches avec elle.
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## Compatibilité des navigateurs
 

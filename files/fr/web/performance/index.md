@@ -13,4 +13,4 @@ Lorsque l'on créent des sites et des applications internet modernes, il est imp
 
 Les sites internet statiques en HTML ont besoins, pour améliorer leurs performances, de techniques manuelles d'optimisation. Plusieurs produits logiciels open source à l'instar de WordPress, ont eux des plugins disponibles pour permettre aux propriétaires de sites web d'optimisez leurs performances web. [WP Super Charge](https://codecanyon.net/item/wp-super-charge/17091749) est un des plugins disponible sur la boutique de WordPress, il permet à l'utilisateur d'optimisez les performances de son site en un clic.
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}

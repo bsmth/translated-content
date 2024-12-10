@@ -183,7 +183,7 @@ Web Audio API에서 사용하기 위한 오디오 소스를 정의하는 인터�
 
 ## 가이드와 자습서
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## 예제
 

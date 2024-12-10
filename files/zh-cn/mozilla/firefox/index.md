@@ -58,7 +58,7 @@ Firefox 延长支持版是在较长周期提供支持的桌面版 Firefox，适�
 
 ## 内容
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## 参见
 

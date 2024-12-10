@@ -8,7 +8,7 @@ slug: Web/Guide
 > [!NOTE]
 > 很抱歉。這個頁面在我們完成內容遷移之前會很混亂。
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 - [JavaScript](/zh-TW/docs/Web/JavaScript)
   - : JavaScript 是用來創造網頁應用程式的腳本化語言.

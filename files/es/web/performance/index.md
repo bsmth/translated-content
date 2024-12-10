@@ -98,7 +98,7 @@ Este artículo inicia el módulo con un buen vistazo a lo que realmente es el re
 - [Rendimiento en animaciones con CSS y con JavaScript](/es/Apps/Build/Performance/CSS_JavaScript_animation_performance)
   - : Las animaciones son críticas para una experiencia de usuario placentera. Este artículo analiza las diferencias de rendimiento entre las animaciones basadas en CSS y JavaScript.
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## Ver También
 

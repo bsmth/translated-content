@@ -82,4 +82,4 @@ Este tema contiene los siguientes módulos, en un orden sugerido para trabajar a
 - [Lista de verificación de rendimiento móvil](/es/docs/Web/Performance/Mobile_performance_checklist)
 - [Optimización del rendimiento de inicio](/es/docs/Web/Apps/Fundamentals/Performance/Optimizing_startup_performance)
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}

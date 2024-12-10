@@ -56,7 +56,7 @@ Early versions of the Media Capture and Streams API specification included separ
 
 The articles below provide additional guidance and how-to information that will help you learn to use the API, and how to perform specific tasks that you may wish to handle.
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## Browser compatibility
 

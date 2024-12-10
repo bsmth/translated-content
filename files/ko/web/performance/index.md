@@ -13,7 +13,7 @@ slug: Web/Performance
 
 ## 주요 안내서
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## 초보자를 위한 튜토리얼
 

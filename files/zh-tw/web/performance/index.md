@@ -13,7 +13,7 @@ Web 性能是負載時間和運行時的客觀度量和用戶體驗。Web 性能
 
 ## 在這一節中
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## 選定的教程
 

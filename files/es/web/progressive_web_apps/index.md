@@ -22,7 +22,7 @@ Para saber cómo implementar PWA, lee la [guía para desarrolladores de PWA](/es
 
 ## Documentación
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 > **Advertencia:** **Todo lo que se encuentra debajo de este punto es un remanente de la versión anterior de esta página y se renovará a medida que se revise el resto del contenido.**
 

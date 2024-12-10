@@ -56,7 +56,7 @@ Firefox ESR 是 Firefox 的長期支援版本，供學校、大學、企業等�
 
 ## 內容
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## 參見
 

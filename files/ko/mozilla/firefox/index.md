@@ -45,7 +45,7 @@ Beta 버전에서의 6주가 지나고, 우리는 새 기능을 1억명 이상�
 
 ## 콘텐츠
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## Firefox 프로파일
 

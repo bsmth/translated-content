@@ -63,7 +63,7 @@ Firefox ESR は、学校、大学、企業、大規模な展開のための延�
 
 ## 目次
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## Firefox プロファイル
 

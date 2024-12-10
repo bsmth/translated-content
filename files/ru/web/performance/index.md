@@ -13,7 +13,7 @@ slug: Web/Performance
 
 ## Ключевые статьи о производительности
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## Руководства для начинающих
 

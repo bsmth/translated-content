@@ -186,7 +186,7 @@ l10n:
 
 ## ガイドとチュートリアル
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
 
 ## 例
 

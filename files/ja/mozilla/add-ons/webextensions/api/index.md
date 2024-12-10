@@ -46,4 +46,4 @@ Microsoft Edge は `browser` 名前空間を使いますが、promise ベース�
 
 下記の JavaScript API の完全な一覧をご覧ください:
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}

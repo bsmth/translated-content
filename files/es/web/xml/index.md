@@ -9,4 +9,4 @@ l10n:
 
 **Extensible Markup Language** es una serialización estricta del [Modelo de Objetos del Documento](/es/docs/Web/API/Document_Object_Model) (DOM, por sus siglas en inglés).
 
-{{LandingPageListSubpages}}
+{{SubpagesWithSummaries}}
