@@ -57,7 +57,20 @@ En un primer nivel de simplicidad, la **cascada** en las hojas de estilo signifi
 
 En el ejemplo siguiente tenemos dos reglas que pueden aplicarse al `h1`. El `h1` acaba siendo de color azul porque estas normas tienen un selector idéntico y, por lo tanto, tienen la misma especificidad. Por esta razón, se aplica la última que aparece.
 
-{{EmbedGHLiveSample("css-examples/learn/cascade/cascade-simple.html", '100%', 400)}}
+```html live-sample___cascade-simple
+<h1>This is my heading.</h1>
+```
+
+```css live-sample___cascade-simple
+h1 {
+  color: red;
+}
+h1 {
+  color: blue;
+}
+```
+
+{{EmbedLiveSample("cascade-simple")}}
 
 ### Especificidad
 
@@ -68,7 +81,21 @@ La especificidad es el modo que tiene el navegador de decidir qué regla se apli
 
 Veamos un ejemplo. Aquí abajo encontrarás dos reglas que pueden aplicarse al elemento `h1`. Este elemento `h1` termina siendo de color rojo: el selector de clase confiere a esta regla una mayor especificidad, así que se aplicará a pesar de la regla para el selector de elemento que aparece más abajo en el orden del código.
 
-{{EmbedGHLiveSample("css-examples/learn/cascade/specificity-simple.html", '100%', 500)}}
+```html live-sample___specificity-simple
+<h1 class="main-heading">This is my heading.</h1>
+```
+
+```css live-sample___specificity-simple
+.main-heading {
+  color: red;
+}
+
+h1 {
+  color: blue;
+}
+```
+
+{{EmbedLiveSample("specificity-simple")}}
 
 Profundizaremos en la especificidad más adelante.
 
@@ -78,7 +105,28 @@ La herencia también debe entenderse en este contexto: algunos valores de las pr
 
 Por ejemplo, si para un elemento se establece el color (`color`) y el tipo de letra (`font-family`), cada elemento que se encuentre dentro de él también se mostrará de ese color y con ese tipo de letra, a menos que les se haya aplicado un color y un tipo de letra diferentes directamente.
 
-{{EmbedGHLiveSample("css-examples/learn/cascade/inheritance-simple.html", '100%', 550)}}
+```html live-sample___inheritance-simple
+<p>
+  As the body has been set to have a color of blue this is inherited through the
+  descendants.
+</p>
+<p>
+  We can change the color by targeting the element with a selector, such as this
+  <span>span</span>.
+</p>
+```
+
+```css live-sample___inheritance-simple
+body {
+  color: blue;
+}
+
+span {
+  color: black;
+}
+```
+
+{{EmbedLiveSample("inheritance-simple")}}
 
 Algunas propiedades no se heredan. Por ejemplo, si para un elemento se establece un ancho {{cssxref("width")}} del 50%, sus descendientes no tendrán un 50% de ancho con respecto al de sus padres. Si este fuera el caso, ¡sería muy frustrante usar CSS!
 
@@ -95,7 +143,46 @@ Vamos a empezar con la herencia. En el ejemplo siguiente tenemos un elemento {{H
 
 El color se ha aplicado a los hijos directos y también a los hijos indirectos: los elementos hijo `<li>` inmediatos y los que están dentro de la primera lista. A continuación, hemos añadido a la segunda lista anidada una clase especial y le hemos aplicado un color diferente, que los elementos hijo de esta heredarán.
 
-{{EmbedGHLiveSample("css-examples/learn/cascade/inheritance.html", '100%', 700)}}
+```html live-sample___inheritance
+<ul class="main">
+  <li>Item One</li>
+  <li>
+    Item Two
+    <ul>
+      <li>2.1</li>
+      <li>2.2</li>
+    </ul>
+  </li>
+  <li>
+    Item Three
+    <ul class="special">
+      <li>
+        3.1
+        <ul>
+          <li>3.1.1</li>
+          <li>3.1.2</li>
+        </ul>
+      </li>
+      <li>3.2</li>
+    </ul>
+  </li>
+</ul>
+```
+
+```css live-sample___inheritance
+.main {
+  color: rebeccapurple;
+  border: 2px solid #ccc;
+  padding: 1em;
+}
+
+.special {
+  color: black;
+  font-weight: bold;
+}
+```
+
+{{EmbedLiveSample("inheritance", "", "280px")}}
 
 La anchura (como se mencionó anteriormente), los márgenes, el relleno y los bordes no se heredan. Si los elementos hijo de nuestra lista heredaran los bordes, todas las listas y los elementos de lista ganarían un borde cada vez ¡y no es probable que vez quieras un efecto así!
 
@@ -126,7 +213,34 @@ Por ejemplo:
 2. ¿Entiendes por qué el tercer y el cuarto enlace se ven de este color? En caso contrario, comprueba la descripción de los valores anteriores.
 3. ¿Cuál de los enlaces va a cambiar de color si se define un nuevo color para el elemento `<a>`, por ejemplo, `a { color: red; }`?
 
-{{EmbedGHLiveSample("css-examples/learn/cascade/keywords.html", '100%', 700)}}
+```html live-sample___keywords
+<ul>
+  <li>Default <a href="#">link</a> color</li>
+  <li class="my-class-1">Inherit the <a href="#">link</a> color</li>
+  <li class="my-class-2">Reset the <a href="#">link</a> color</li>
+  <li class="my-class-3">Unset the <a href="#">link</a> color</li>
+</ul>
+```
+
+```css live-sample___keywords
+body {
+  color: green;
+}
+
+.my-class-1 a {
+  color: inherit;
+}
+
+.my-class-2 a {
+  color: initial;
+}
+
+.my-class-3 a {
+  color: unset;
+}
+```
+
+{{EmbedLiveSample("keywords")}}
 
 ### Restablecer todos los valores de propiedad
 
@@ -134,7 +248,28 @@ La propiedad CSS abreviada `all` se puede utilizar para aplicar uno de estos val
 
 En el ejemplo siguiente hay dos bloques de cita. El primero ya tiene un estilo aplicado al propio elemento de cita, mientras que el segundo tiene una clase aplicada al bloque de cita que establece el valor `all` en `unset`.
 
-{{EmbedGHLiveSample("css-examples/learn/cascade/all.html", '100%', 700)}}
+```html live-sample___all
+<blockquote>
+  <p>This blockquote is styled</p>
+</blockquote>
+
+<blockquote class="fix-this">
+  <p>This blockquote is not styled</p>
+</blockquote>
+```
+
+```css live-sample___all
+blockquote {
+  background-color: orange;
+  border: 2px solid blue;
+}
+
+.fix-this {
+  all: unset;
+}
+```
+
+{{EmbedLiveSample("all")}}
 
 Prueba a establecer el valor de `all` al resto de valores disponibles y observa la diferencia.
 
@@ -164,7 +299,29 @@ Un elemento que hay que tener en cuenta es que aunque pensamos en términos de s
 
 Este comportamiento ayuda a evitar repeticiones en el CSS. Una práctica común es definir estilos genéricos para los elementos básicos y luego, crear clases para los elementos que son diferentes. Por ejemplo, en la hoja de estilo que mostramos a continuación hemos definido estilos genéricos para los encabezados de nivel 2; posteriormente hemos creado algunas clases que solo cambian algunas de las propiedades y los valores. Los valores definidos inicialmente se aplican a todos los encabezados, y entonces los valores más específicos se aplican a los encabezados con las clases.
 
-{{EmbedGHLiveSample("css-examples/learn/cascade/mixing-rules.html", '100%', 700)}}
+```html live-sample___mixing-rules
+<h2>Heading with no class</h2>
+<h2 class="small">Heading with class of small</h2>
+<h2 class="bright">Heading with class of bright</h2>
+```
+
+```css live-sample___mixing-rules
+h2 {
+  font-size: 2em;
+  color: #000;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.small {
+  font-size: 1em;
+}
+
+.bright {
+  color: rebeccapurple;
+}
+```
+
+{{EmbedLiveSample("mixing-rules", "", "240px")}}
 
 Ahora vamos a echar un vistazo a cómo el navegador calcula la especificidad. Ya sabemos que un selector de elemento tiene una especificidad baja y se puede sobrescribir con un elemento de clase. Esencialmente se otorga un valor de puntos a los diferentes tipos de selectores y la suma de estos establece la importancia de ese selector en particular, que a continuación puede evaluarse ante otras posibles coincidencias.
 
@@ -190,7 +347,73 @@ La tabla siguiente muestra algunos ejemplos concretos para ayudarte a entenderlo
 
 Antes de continuar, vamos a ver un ejemplo:
 
-{{EmbedGHLiveSample("css-examples/learn/cascade/specificity-boxes.html", '100%', 700)}}
+```html live-sample___specificity-boxes
+<div class="container" id="outer">
+  <div class="container" id="inner">
+    <ul>
+      <li class="nav"><a href="#">One</a></li>
+      <li class="nav"><a href="#">Two</a></li>
+    </ul>
+  </div>
+</div>
+```
+
+```css live-sample___specificity-boxes
+/* 1. specificity: 1-0-1 */
+#outer a {
+  background-color: red;
+}
+
+/* 2. specificity: 2-0-1 */
+#outer #inner a {
+  background-color: blue;
+}
+
+/* 3. specificity: 1-0-4 */
+#outer div ul li a {
+  color: yellow;
+}
+
+/* 4. specificity: 1-1-3 */
+#outer div ul .nav a {
+  color: white;
+}
+
+/* 5. specificity: 0-2-4 */
+div div li:nth-child(2) a:hover {
+  border: 10px solid black;
+}
+
+/* 6. specificity: 0-2-3 */
+div li:nth-child(2) a:hover {
+  border: 10px dashed black;
+}
+
+/* 7. specificity: 0-3-3 */
+div div .nav:nth-child(2) a:hover {
+  border: 10px double black;
+}
+
+a {
+  display: inline-block;
+  line-height: 40px;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+```
+
+{{EmbedLiveSample("specificity-boxes")}}
 
 ¿Qué pasa aquí? En primer lugar, estamos interesados solo en las primeras siete reglas de este ejemplo y, como te habrás dado cuenta, hemos incluido sus valores de especificidad en un comentario antes de cada una.
 
@@ -209,7 +432,30 @@ Hay una pieza especial de CSS que se puede utilizar para anular todos los cálcu
 
 Echa un vistazo a este ejemplo en el que se muestran dos párrafos, uno de los cuales tiene un elemento ID.
 
-{{EmbedGHLiveSample("css-examples/learn/cascade/important.html", '100%', 700)}}
+```html live-sample___important
+<p class="better">This is a paragraph.</p>
+<p class="better" id="winning">One selector to rule them all!</p>
+```
+
+```css live-sample___important
+#winning {
+  background-color: red;
+  border: 1px solid black;
+}
+
+.better {
+  background-color: gray;
+  border: none !important;
+}
+
+p {
+  background-color: blue;
+  color: white;
+  padding: 5px;
+}
+```
+
+{{EmbedLiveSample("important")}}
 
 Vamos a observarlo con detenimiento para ver qué sucede. Elimina algunas de las propiedades para ver lo que sucede si te cuesta entender lo que ocurre:
 

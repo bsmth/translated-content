@@ -30,7 +30,49 @@ Las asignaciones para el ancho ({{CSSxRef("width")}}) y el alto ({{CSSxRef("heig
 
 En el siguiente ejemplo, establecemos un modo de escritura `horizontal-tb`. Cambiamos esto por `vertical-rl` y veremos que el primer ejemplo — cuando usamos `width` y `height` — permanece con el mismo tamaño en cada dimensión, a pesar de que el texto se vuelve vertical. El segundo ejemplo — cuando usamos `inline-size` y `block-size` — seguirá la dirección del texto como si todo el bloque hubiera girado.
 
-{{EmbedGHLiveSample("css-examples/logical/size-inline-block.html", '100%', 500)}}
+```html live-sample___size-inline-block
+<div class="container">
+  <div class="physical box">I have a width of 200px and a height of 100px.</div>
+
+  <div class="logical box">
+    I have an inline-size of 200px and a block-size of 100px.
+  </div>
+</div>
+```
+
+```css hidden live-sample___size-inline-block
+body {
+  font: 1.2em / 1.5 sans-serif;
+}
+.container {
+  display: flex;
+}
+.box {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  padding: 10px;
+  margin: 10px;
+}
+```
+
+```css live-sample___size-inline-block
+.box {
+  writing-mode: horizontal-tb;
+}
+
+.physical {
+  width: 200px;
+  height: 100px;
+}
+
+.logical {
+  inline-size: 200px;
+  block-size: 100px;
+}
+```
+
+{{EmbedLiveSample("size-inline-block")}}
 
 ## Ejemplo de ancho y alto mínimo
 
@@ -38,13 +80,95 @@ También hay asignaciones para {{CSSxRef ("min-width")}} y {{CSSxRef ("min-heigh
 
 Intente cambiar el siguiente ejemplo a `vertical-rl`, como en el primer ejemplo, para ver el efecto que tiene. Estoy usando `min-height` en el primer ejemplo y `min-block-size` en el segundo.
 
-{{EmbedGHLiveSample("css-examples/logical/size-min.html", "100%", 500)}}
+```html live-sample___size-min
+<div class="container">
+  <div class="physical box">
+    I have a width of 200px and a min-height of 5em.
+  </div>
+
+  <div class="logical box">
+    I have an inline-size of 200px and a min-block-size of 5em.
+  </div>
+</div>
+```
+
+```css hidden live-sample___size-min
+body {
+  font: 1.2em / 1.5 sans-serif;
+}
+.container {
+  display: flex;
+}
+.box {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  padding: 10px;
+  margin: 10px;
+}
+```
+
+```css live-sample___size-min
+.box {
+  writing-mode: horizontal-tb;
+}
+
+.physical {
+  width: 200px;
+  min-height: 5em;
+}
+
+.logical {
+  inline-size: 200px;
+  min-block-size: 5em;
+}
+```
+
+{{EmbedLiveSample("size-min")}}
 
 ## Ejemplo de ancho y alto máximo
 
 Finalmente, puedes usar {{CSSxRef("max-inline-size")}} y {{CSSxRef("max-block-size")}} como reemplazos de {{CSSxRef("max-width")}} y {{CSSxRef("max-height")}}. Intenta jugar con el siguiente ejemplo de la misma manera que antes.
 
-{{EmbedGHLiveSample("css-examples/logical/size-max.html", "100%", 500)}}
+```html live-sample___size-max
+<div class="container">
+  <div class="physical box">I have a max-width of 200px.</div>
+
+  <div class="logical box">I have an max-inline-size of 200px.</div>
+</div>
+```
+
+```css hidden live-sample___size-max
+body {
+  font: 1.2em / 1.5 sans-serif;
+}
+.container {
+  display: flex;
+}
+.box {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  padding: 10px;
+  margin: 10px;
+}
+```
+
+```css live-sample___size-max
+.box {
+  writing-mode: horizontal-tb;
+}
+
+.physical {
+  max-width: 200px;
+}
+
+.logical {
+  max-inline-size: 200px;
+}
+```
+
+{{EmbedLiveSample("size-max")}}
 
 ## Palabras claves para redimensionamiento lógico
 
@@ -52,6 +176,55 @@ La propiedad {{CSSxRef("resize")}} establece si un elemento se puede redimension
 
 El valor de la palabra clave de `both` para la propiedad de cambio de tamaño funciona ya sea que esté pensando física o lógicamente. Establece ambas dimensiones a la vez. Intenta jugar con el siguiente ejemplo.
 
-{{EmbedGHLiveSample("css-examples/logical/size-resize.html", "100%", 700)}}
+```html live-sample___size-resize
+<div class="container">
+  <div class="physical box">
+    I have a width of 200px and a height of 100px. I can be resized
+    horizontally.
+  </div>
+
+  <div class="logical box">
+    I have an inline-size of 200px and a block-size of 100px. I can be resized
+    in the inline direction.
+  </div>
+</div>
+```
+
+```css hidden live-sample___size-resize
+body {
+  font: 1.2em / 1.5 sans-serif;
+}
+.container {
+  display: flex;
+}
+.box {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  padding: 10px;
+  margin: 10px;
+}
+```
+
+```css live-sample___size-resize
+.box {
+  writing-mode: horizontal-tb;
+  overflow: scroll;
+}
+
+.physical {
+  width: 200px;
+  height: 100px;
+  resize: horizontal;
+}
+
+.logical {
+  inline-size: 200px;
+  block-size: 100px;
+  resize: inline;
+}
+```
+
+{{EmbedLiveSample("size-resize")}}
 
 > **Advertencia:** **Nota:** Tenga en cuenta que actualmente los valores lógicos para el cambio de tamaño solo son compatibles con Firefox.

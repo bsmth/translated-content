@@ -25,7 +25,52 @@ Si en lugar de usar la propiedad `width` usamos la propiedad lógica {{CSSxRef("
 
 Puedes probar lo anterior en el siguiente ejemplo en vivo. Cambia la propiedad `writing-mode` de `vertical-rl` a `horizontal-tb` en `.box` para mirar cómo cambia el diseño con las diferentes propiedades.
 
-{{EmbedGHLiveSample("css-examples/logical/intro-grid-example.html", '100%', 700)}}
+```html live-sample___intro-grid-example
+<div class="grid">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+  <div>Four</div>
+</div>
+```
+
+```css hidden live-sample___intro-grid-example
+body {
+  font: 1.2em / 1.5 sans-serif;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+}
+
+.grid > * {
+  border-radius: 5px;
+  border: 2px solid rgb(96 139 168 / 0.4);
+  background-color: rgb(96 139 168 / 0.2);
+  padding: 10px;
+}
+
+.grid :nth-child(1) {
+  align-self: start;
+}
+
+.grid :nth-child(2) {
+  justify-self: end;
+}
+```
+
+```css live-sample___intro-grid-example
+.grid {
+  writing-mode: vertical-rl;
+  inline-size: 400px;
+}
+```
+
+{{EmbedLiveSample("intro-grid-example", "", "450px")}}
 
 Cuando trabajamos en un sitio con un modo de escritura diferente al predeterminado (horizontal) o por razones creativas, ser capaces de relacionarnos con el flujo del contenido tiene mucho sentido.
 

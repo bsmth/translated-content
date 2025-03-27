@@ -53,7 +53,41 @@ En el ejemplo siguiente hay dos cajas, ambas de 200 píxeles de tamaño:
 - Una contiene una imagen que es más pequeña de 200 píxeles: es más pequeña que la caja y no se expande para rellenarla.
 - La otra es más grande de 200 píxeles y desborda la caja.
 
-{{EmbedGHLiveSample("css-examples/learn/images/size.html", '100%', 1000)}}
+```html live-sample___size
+<div class="wrapper">
+  <div class="box">
+    <img
+      alt="star"
+      src="https://mdn.github.io/shared-assets/images/examples/big-star.png" />
+  </div>
+  <div class="box">
+    <img
+      alt="balloons"
+      src="https://mdn.github.io/shared-assets/images/examples/balloons.jpg" />
+  </div>
+</div>
+```
+
+```css live-sample___size
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.wrapper > * {
+  margin: 20px;
+}
+
+.box {
+  border: 5px solid darkblue;
+  width: 200px;
+}
+
+img {
+}
+```
+
+{{EmbedLiveSample("size", "", "250px")}}
 
 ¿Qué podemos hacer con el problema del desbordado?
 
@@ -67,7 +101,54 @@ La propiedad {{cssxref ("object-fit")}} puede ser de gran ayuda. Cuando se usa `
 
 A continuación, hemos utilizado el valor `cover`, que reduce el tamaño de la imagen a la vez que mantiene la relación de aspecto hasta que rellena toda la caja. Al mantenerse la relación de aspecto, la caja corta algunas partes de la imagen.
 
-{{EmbedGHLiveSample("css-examples/learn/images/object-fit.html", '100%', 1000)}}
+```html live-sample___object-fit
+<div class="wrapper">
+  <div class="box">
+    <img
+      alt="balloons"
+      class="cover"
+      src="https://mdn.github.io/shared-assets/images/examples/balloons.jpg" />
+  </div>
+  <div class="box">
+    <img
+      alt="balloons"
+      class="contain"
+      src="https://mdn.github.io/shared-assets/images/examples/balloons.jpg" />
+  </div>
+</div>
+```
+
+```css live-sample___object-fit
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.wrapper > * {
+  margin: 20px;
+}
+
+.box {
+  border: 5px solid darkblue;
+  width: 200px;
+  height: 200px;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+.cover {
+  object-fit: cover;
+}
+
+.contain {
+  object-fit: contain;
+}
+```
+
+{{EmbedLiveSample("object-fit", "", "250px")}}
 
 Si usamos el valor `contain`, la imagen se reduce hasta que es lo bastante pequeña para caber dentro de la caja. Esto puede dar lugar a un formato panorámico si la imagen no presenta la misma relación de aspecto que la caja.
 
@@ -79,7 +160,32 @@ A medida que vayas usando diversas técnicas de diseño CSS en elementos de reem
 
 Puedes ver esto en el ejemplo siguiente, en que hay un contenedor de con dos columnas y dos filas, que tiene cuatro elementos. Todos los elementos `<div>` tienen un color de fondo y se estiran para llenar la fila y la columna. La imagen, sin embargo, no se expande.
 
-{{EmbedGHLiveSample("css-examples/learn/images/layout.html", '100%', 1000)}}
+```html live-sample___layout
+<div class="wrapper">
+  <img
+    alt="star"
+    src="https://mdn.github.io/shared-assets/images/examples/big-star.png" />
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+```
+
+```css live-sample___layout
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px 100px;
+  gap: 20px;
+}
+
+.wrapper > div {
+  background-color: rebeccapurple;
+  border-radius: 0.5em;
+}
+```
+
+{{EmbedLiveSample("layout", "", "220px")}}
 
 Si sigues estos artículos en orden, no habrás llegado todavía a la compaginación. Ten en cuenta solo que cuando los elementos de reemplazo forman parte de una cuadrícula o un diseño flexible, presentan comportamientos predeterminados diferentes, en esencia para evitar que el diseño los expanda de manera extraña.
 
@@ -108,7 +214,57 @@ Los elementos que permiten la entrada de texto, como `<input type="text">`, algu
 
 En el ejemplo siguiente hemos diseñado algunas entradas de texto con CSS: puedes ver que algunos elementos como los bordes, los márgenes y el área de relleno se aplican como es de esperar. Utilizamos selectores de atributos para apuntar a los diferentes tipos de entrada. Intenta cambiar el aspecto de este formulario ajustando los bordes, añadiendo colores de fondo a los campos y cambiando las fuentes y área de relleno.
 
-{{EmbedGHLiveSample("css-examples/learn/images/form.html", '100%', 1000)}}
+```html live-sample___form
+<form>
+  <div><label for="name">Name</label> <input id="name" type="text" /></div>
+  <div><label for="email">Email</label> <input id="email" type="email" /></div>
+
+  <div class="buttons"><input type="submit" value="Submit" /></div>
+</form>
+```
+
+```css hidden live-sample___form
+body {
+  font-family: sans-serif;
+}
+form > div {
+  display: flex;
+}
+
+label {
+  width: 10em;
+}
+
+.buttons {
+  justify-content: center;
+}
+```
+
+```css live-sample___form
+input[type="text"],
+input[type="email"] {
+  border: 2px solid #000;
+  margin: 0 0 1em 0;
+  padding: 10px;
+  width: 80%;
+}
+
+input[type="submit"] {
+  border: 3px solid #333;
+  background-color: #999;
+  border-radius: 5px;
+  padding: 10px 2em;
+  font-weight: bold;
+  color: #fff;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  background-color: #333;
+}
+```
+
+{{EmbedLiveSample("form")}}
 
 > [!WARNING]
 > Al cambiar el estilo de los elementos de formulario debes asegurarte de que para el usuario sigue siendo obvio que se trata de elementos de formulario. Podrías crear una entrada de formulario sin bordes y un fondo que sea casi indistinguible del contenido que lo rodea, pero esto haría que sea muy difícil de reconocer y completar.

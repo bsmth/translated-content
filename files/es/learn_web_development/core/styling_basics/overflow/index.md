@@ -45,11 +45,41 @@ Vamos a comenzar con dos ejemplos que demuestran cómo se comporta el CSS por de
 
 El primero consiste en una caja a la que se le ha restringido la dimensión al darle una altura. Luego hemos añadido más contenido del que cabe en la caja. El contenido se desborda y se distribuye desordenadamente sobre el párrafo que hay debajo de la caja.
 
-{{EmbedGHLiveSample("css-examples/learn/overflow/block-overflow.html", '100%', 600)}}
+```html live-sample___block-overflow
+<div class="box">
+  This box has a height and a width. This means that if there is too much
+  content to be displayed within the assigned height, there will be an overflow
+  situation. If overflow is set to hidden then any overflow will not be visible.
+</div>
+
+<p>This content is outside of the box.</p>
+```
+
+```css live-sample___block-overflow
+.box {
+  border: 1px solid #333333;
+  width: 250px;
+  height: 100px;
+}
+```
+
+{{EmbedLiveSample("block-overflow", "", "200px")}}
 
 El segundo consiste en una palabra dentro de una caja cuya dimensión en línea está restringida. La caja se ha hecho demasiado pequeña para que esa palabra quepa, y se desborda.
 
-{{EmbedGHLiveSample("css-examples/learn/overflow/inline-overflow.html", '100%', 500)}}
+```html live-sample___inline-overflow
+<div class="word">Overflow</div>
+```
+
+```css live-sample___inline-overflow
+.word {
+  border: 1px solid #333333;
+  width: 100px;
+  font-size: 250%;
+}
+```
+
+{{EmbedLiveSample("inline-overflow")}}
 
 Te debes estar preguntando por qué el CSS ha tomado por defecto el enfoque más bien desarreglado de provocar el desbordamiento desordenado del contenido. ¿Por qué no ocultar el contenido adicional o hacer crecer la caja?
 
@@ -65,21 +95,91 @@ La propiedad {{cssxref ("overflow")}} es el modo como tomas el control del desbo
 
 Si deseas cortar el contenido cuando se desborda, puedes establecer el valor `overflow: hidden` en tu caja, que hace exactamente lo que dice: ocultar el desbordamiento. Esto puede hacer que las cosas desaparezcan, por lo que solo debes utilizar esta opción si ocultar contenido no te va a causar ningún problema.
 
-{{EmbedGHLiveSample("css-examples/learn/overflow/hidden.html", '100%', 600)}}
+```html live-sample___hidden
+<div class="box">
+  This box has a height and a width. This means that if there is too much
+  content to be displayed within the assigned height, there will be an overflow
+  situation. If overflow is set to hidden then any overflow will not be visible.
+</div>
+
+<p>This content is outside of the box.</p>
+```
+
+```css live-sample___hidden
+.box {
+  border: 1px solid #333333;
+  width: 250px;
+  height: 100px;
+  overflow: hidden;
+}
+```
+
+{{EmbedLiveSample("hidden", "", "200px")}}
 
 Quizás te gustaría añadir barras de desplazamiento cuando el contenido se desborde. Si usas `overflow: scroll`, tu navegador siempre mostrará barras de desplazamiento, incluso cuando no haya suficiente contenido para que pueda desbordarse. Es posible que desees hacer esto, porque evita que aparezcan y desaparezcan barras de desplazamiento según el contenido.
 
 **Si en la caja siguiente eliminas parte del contenido, observarás que las barras de desplazamiento permanecen aun sin que haya nada que desplazar (o, como mucho, solo las pistas de la barra de desplazamiento).**
 
-{{EmbedGHLiveSample("css-examples/learn/overflow/scroll.html", '100%', 600)}}
+```html live-sample___scroll
+<div class="box">
+  This box has a height and a width. This means that if there is too much
+  content to be displayed within the assigned height, there will be an overflow
+  situation. If overflow is set to hidden then any overflow will not be visible.
+</div>
+
+<p>This content is outside of the box.</p>
+```
+
+```css live-sample___scroll
+.box {
+  border: 1px solid #333333;
+  width: 250px;
+  height: 100px;
+  overflow: scroll;
+}
+```
+
+{{EmbedLiveSample("scroll", "", "200px")}}
 
 En el ejemplo anterior solo necesitamos desplazarnos en el eje `y`, sin embargo, obtenemos barras de desplazamiento en ambos ejes. En su lugar, puedes usar la propiedad {{cssxref ("overflow-y")}}, y establecer `overflow-y: scroll` para poder desplazarte solo por el eje _y_.
 
-{{EmbedGHLiveSample("css-examples/learn/overflow/scroll-y.html", '100%', 600)}}
+```html live-sample___scroll-y
+<div class="box">
+  This box has a height and a width. This means that if there is too much
+  content to be displayed within the assigned height, there will be an overflow
+  situation. If overflow is set to hidden then any overflow will not be visible.
+</div>
+
+<p>This content is outside of the box.</p>
+```
+
+```css live-sample___scroll-y
+.box {
+  border: 1px solid #333333;
+  width: 250px;
+  height: 100px;
+  overflow-y: scroll;
+}
+```
+
+{{EmbedLiveSample("scroll-y", "", "200px")}}
 
 También puedes desplazarte por el eje _x_ usando {{cssxref ("overflow-x")}}, aunque esta no es una forma recomendada para manejar palabras largas. Si necesitas lidiar con una palabra larga en una caja pequeña, puedes consultar las propiedades {{cssxref ("word-break")}} o {{cssxref ("overflow-wrap")}}. Además, algunos de los métodos expuestos en el artículo [Elementos de dimensionado en CSS](/es/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS) pueden ayudarte a crear cuadros que se adapten mejor a cantidades variables de contenido.
 
-{{EmbedGHLiveSample("css-examples/learn/overflow/scroll-x.html", '100%', 500)}}
+```html live-sample___scroll-x
+<div class="word">Overflow</div>
+```
+
+```css live-sample___scroll-x
+.word {
+  border: 5px solid #333333;
+  width: 100px;
+  font-size: 250%;
+  overflow-x: scroll;
+}
+```
+
+{{EmbedLiveSample("scroll-x")}}
 
 Al igual que con el desplazamiento, obtendrás una barra de desplazamiento en la dimensión de desplazamiento independientemente de si hay suficiente contenido para provocar una barra de desplazamiento.
 
@@ -90,7 +190,26 @@ Si deseas que aparezcan barras de desplazamiento solo si hay más contenido del 
 
 **En el ejemplo siguiente, elimina parte del contenido hasta que quepa en la caja y observarás que las barras de desplazamiento desaparecen.**
 
-{{EmbedGHLiveSample("css-examples/learn/overflow/auto.html", '100%', 600)}}
+```html live-sample___auto
+<div class="box">
+  This box has a height and a width. This means that if there is too much
+  content to be displayed within the assigned height, there will be an overflow
+  situation. If overflow is set to hidden then any overflow will not be visible.
+</div>
+
+<p>This content is outside of the box.</p>
+```
+
+```css live-sample___auto
+.box {
+  border: 1px solid #333333;
+  width: 250px;
+  height: 100px;
+  overflow: auto;
+}
+```
+
+{{EmbedLiveSample("auto", "", "200px")}}
 
 ## `overflow` establece un contexto de formato de bloque
 

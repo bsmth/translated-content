@@ -11,7 +11,34 @@ El diseño **CSS Flexbox** es un módulo de CSS que define un modelo de caja, op
 
 En el siguiente ejemplo, se ha definido un contenedor como `display: flex`, lo que significa que los tres elementos hijo se convierten en elementos flexibles. El valor de `justify-content` se ha establecido en `space-between` para espaciar los elementos de manera uniforme en el eje principal. Se ha colocado una cantidad igual de espacio entre cada elemento, con los elementos izquierdo y derecho alineados con los bordes del contenedor flexible. También puede ver que los elementos se estiran en el eje transversal, debido a que el valor predeterminado de `align-items` es `stretch`. Los elementos se extienden hasta la altura del contenedor flexible, por lo que cada uno de ellos tiene tanta altura como el elemento más alto.
 
-{{EmbedGHLiveSample("css-examples/flexbox/basics/simple-example.html", '100%', 500)}}
+```html live-sample___simple-example
+<div class="box">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three <br />has <br />extra <br />text</div>
+</div>
+```
+
+```css live-sample___simple-example
+body {
+  font-family: sans-serif;
+}
+
+.box {
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+  justify-content: space-between;
+}
+
+.box > * {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  padding: 1em;
+}
+```
+
+{{EmbedLiveSample("simple-example")}}
 
 ## Referencia
 

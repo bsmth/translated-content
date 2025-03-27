@@ -85,7 +85,46 @@ El segundo es una lista, que se presenta usando `display: flex`. Esto establece 
 
 Debajo hay un párrafo a nivel de bloque, dentro del cual hay dos elementos `<span>`. Estos elementos normalmente serían de tipo `inline`; sin embargo, uno de los elementos tiene una clase de bloque, y lo hemos establecido como `display: block`.
 
-{{EmbedGHLiveSample("css-examples/learn/box-model/block.html", '100%', 1000)}}
+```html live-sample___block
+<p>I am a paragraph. A short one.</p>
+<ul>
+  <li>Item One</li>
+  <li>Item Two</li>
+  <li>Item Three</li>
+</ul>
+<p>
+  I am another paragraph. Some of the <span class="block">words</span> have been
+  wrapped in a <span>span element</span>.
+</p>
+```
+
+```css live-sample___block
+body {
+  font-family: sans-serif;
+}
+p,
+ul {
+  border: 2px solid rebeccapurple;
+  padding: 0.2em;
+}
+
+.block,
+li {
+  border: 2px solid blue;
+  padding: 0.2em;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+}
+
+.block {
+  display: block;
+}
+```
+
+{{EmbedLiveSample("block", "", "220px")}}
 
 Podemos ver cómo se comportan los elementos `inline` en el ejemplo siguiente. Los elementos `<span>` del primer párrafo están en línea de manera predeterminada y, por lo tanto, no fuerzan ningún salto de línea.
 
@@ -95,7 +134,46 @@ Finalmente, hay dos párrafos configurados con `display: inline`. El contenedor 
 
 **En el ejemplo puedes cambiar `display: inline` por `display: block` o `display: inline-flex` y por `display: flex` para alternar entre estos modos de visualización.**
 
-{{EmbedGHLiveSample("css-examples/learn/box-model/inline.html", '100%', 1000)}}
+```html live-sample___inline
+<p>
+  I am a paragraph. Some of the
+  <span>words</span> have been wrapped in a <span>span element</span>.
+</p>
+<ul>
+  <li>Item One</li>
+  <li>Item Two</li>
+  <li>Item Three</li>
+</ul>
+<p class="inline">I am a paragraph. A short one.</p>
+<p class="inline">I am another paragraph. Also a short one.</p>
+```
+
+```css live-sample___inline
+body {
+  font-family: sans-serif;
+}
+p,
+ul {
+  border: 2px solid rebeccapurple;
+}
+
+span,
+li {
+  border: 2px solid blue;
+}
+
+ul {
+  display: inline-flex;
+  list-style: none;
+  padding: 0;
+}
+
+.inline {
+  display: inline;
+}
+```
+
+{{EmbedLiveSample("inline")}}
 
 En artículos posteriores encontrarás cosas como el diseño flexible. El aspecto clave a recordar aquí es que cambiar el valor de la propiedad `display` puede cambiar entre el modo de visualización exterior en bloque y en línea de una caja, que cambia la forma en que se presenta junto con otros elementos en la disposición en pantalla.
 
@@ -177,7 +255,27 @@ En el ejemplo siguiente puedes ver dos cajas. Ambas tienen una clase `.box`, lo 
 
 **¿Puedes cambiar el tamaño de la segunda caja (añadiendo CSS a la clase `.alternate`) para que su anchura y altura coincidan con las de la primera caja?**
 
-{{EmbedGHLiveSample("css-examples/learn/box-model/box-models.html", '100%', 1000)}}
+```html live-sample___box-models
+<div class="box">I use the standard box model.</div>
+<div class="box alternate">I use the alternate box model.</div>
+```
+
+```css live-sample___box-models
+.box {
+  border: 5px solid rebeccapurple;
+  background-color: lightgray;
+  padding: 40px;
+  margin: 40px;
+  width: 300px;
+  height: 150px;
+}
+
+.alternate {
+  box-sizing: border-box;
+}
+```
+
+{{EmbedLiveSample("box-models", "", "400px")}}
 
 > [!NOTE]
 > Puedes encontrar la solución [aquí](https://github.com/mdn/css-examples/blob/master/learn/solutions.md#the-box-model).
@@ -207,7 +305,32 @@ Podemos controlar todos los márgenes de un elemento a la vez usando la propieda
 
 **En el ejemplo siguiente, cambia los valores de margen para ver cómo se empuja la caja debido al espacio que el margen crea o se elimina (si es un margen negativo) entre este elemento y el elemento que lo contiene.**
 
-{{EmbedGHLiveSample("css-examples/learn/box-model/margin.html", '100%', 1000)}}
+```html live-sample___margin
+<div class="container">
+  <div class="box">Change my margin.</div>
+</div>
+```
+
+```css live-sample___margin
+.container {
+  border: 5px solid blue;
+  margin: 40px;
+}
+
+.box {
+  border: 5px solid rebeccapurple;
+  background-color: lightgray;
+  padding: 10px;
+  height: 100px;
+  /* try changing the margin properties: */
+  margin-top: -40px;
+  margin-right: 30px;
+  margin-bottom: 40px;
+  margin-left: 4em;
+}
+```
+
+{{EmbedLiveSample("margin", "", "220px")}}
 
 #### Colapso del margen
 
@@ -217,7 +340,34 @@ En el ejemplo siguiente hay dos párrafos. El párrafo superior tiene un atribut
 
 **Pruébalo ajustando el atributo `margin-top` del segundo párrafo a 0. El margen visible entre los dos párrafos no cambiará, sino que conservará los 50 píxeles fijados en el atributo `bottom-margin` del primer párrafo.**
 
-{{EmbedGHLiveSample("css-examples/learn/box-model/margin-collapse.html", '100%', 1000)}}
+```html live-sample___margin-collapse
+<div class="container">
+  <p class="one">I am paragraph one.</p>
+  <p class="two">I am paragraph two.</p>
+</div>
+```
+
+```css live-sample___margin-collapse
+.container {
+  border: 5px solid blue;
+  margin: 40px;
+}
+
+p {
+  border: 5px solid rebeccapurple;
+  background-color: lightgray;
+  padding: 10px;
+}
+.one {
+  margin-bottom: 50px;
+}
+
+.two {
+  margin-top: 30px;
+}
+```
+
+{{EmbedLiveSample("margin-collapse", "", "280px")}}
 
 Hay una serie de reglas que establecen cuándo los márgenes colapsan y cuándo no. Para obtener más información, consulta la página web sobre [entender el colapso de márgenes](/es/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing). Por ahora solo debes recordar que el colapso de los márgenes es algo que puede suceder. Si creas un espacio con márgenes y no obtienes el espacio que esperas, probablemente es que se haya producido algún colapso de márgenes.
 
@@ -259,7 +409,35 @@ Para establecer el ancho, el estilo o el color de un solo lado, puedes usar una 
 
 **En el ejemplo siguiente, hemos utilizado varios ejemplos de la lista anterior para crear bordes. Juega con las diferentes propiedades para comprobar que entiendes cómo funcionan. Las páginas de MDN sobre las propiedades de los bordes te proporcionan información sobre los diferentes estilos entre los que puedes elegir para los bordes.**
 
-{{EmbedGHLiveSample("css-examples/learn/box-model/border.html", '100%', 1000)}}
+```html live-sample___border
+<div class="container">
+  <div class="box">Change my borders.</div>
+</div>
+```
+
+```css live-sample___border
+body {
+  font-family: sans-serif;
+}
+.container {
+  margin: 40px;
+  padding: 20px;
+  border-top: 5px dotted green;
+  border-right: 1px solid black;
+  border-bottom: 20px double rgb(23 45 145);
+}
+
+.box {
+  padding: 20px;
+  background-color: lightgray;
+  border: 1px solid #333333;
+  border-top-style: dotted;
+  border-right-width: 20px;
+  border-bottom-color: hotpink;
+}
+```
+
+{{EmbedLiveSample("border", "", "220px")}}
 
 ### Relleno
 
@@ -276,7 +454,33 @@ Podemos controlar el área de relleno para todos los lados de un mismo elemento 
 
 **También puedes cambiar el relleno en la clase `.container`, que abrirá el espacio entre el contenedor y la caja. El área de relleno se puede cambiar para cualquier elemento y abrirá espacio entre su borde y lo que esté dentro del elemento.**
 
-{{EmbedGHLiveSample("css-examples/learn/box-model/padding.html", '100%', 800)}}
+```html live-sample___padding
+<div class="container">
+  <div class="box">Change my padding.</div>
+</div>
+```
+
+```css live-sample___padding
+body {
+  font-family: sans-serif;
+}
+.box {
+  border: 5px solid rebeccapurple;
+  background-color: lightgray;
+  padding-top: 0;
+  padding-right: 30px;
+  padding-bottom: 40px;
+  padding-left: 4em;
+}
+
+.container {
+  border: 5px solid blue;
+  margin: 40px;
+  padding: 20px;
+}
+```
+
+{{EmbedLiveSample("padding", "", "220px")}}
 
 ## El modelo de cajas y las cajas en línea
 
@@ -284,7 +488,32 @@ Todo lo anterior se aplica por completo a las cajas en bloque. Algunas de las pr
 
 En el ejemplo siguiente hay un elemento `<span>` dentro de un párrafo al que hemos aplicado las propiedades `width`, `height`, `margin`, `border`, y `padding` Puedes ver que la anchura y la altura se ignoran. Se respetan el margen, el relleno y el borde, pero no cambian la relación de otro contenido con respecto a nuestra caja en línea, por lo que el relleno y el borde se superponen a otras palabras en el párrafo.
 
-{{EmbedGHLiveSample("css-examples/learn/box-model/inline-box-model.html", '100%', 800)}}
+```html live-sample___inline-box-model
+<p>
+  I am a paragraph and this is a <span>span</span> inside that paragraph. A span
+  is an inline element and so does not respect width and height.
+</p>
+```
+
+```css live-sample___inline-box-model
+body {
+  font-family: sans-serif;
+}
+p {
+  border: 2px solid rebeccapurple;
+  width: 200px;
+}
+span {
+  margin: 20px;
+  padding: 20px;
+  width: 80px;
+  height: 150px;
+  background-color: lightblue;
+  border: 2px solid blue;
+}
+```
+
+{{EmbedLiveSample("inline-box-model")}}
 
 ## El uso de display: inline-block
 
@@ -299,7 +528,34 @@ Sin embargo, no se fuerza un salto de línea, y solo se hace más grande que su 
 
 **En el ejemplo siguiente hemos añadido `display: inline-block` a nuestro elemento `<span>`. Cámbialo por `display: block` o elimina la línea para ver la diferencia entre ambos modelos de visualización.**
 
-{{EmbedGHLiveSample("css-examples/learn/box-model/inline-block.html", '100%', 800)}}
+```html live-sample___inline-block
+<p>
+  I am a paragraph and this is a <span>span</span> inside that paragraph. A span
+  is an inline element and so does not respect width and height.
+</p>
+```
+
+```css live-sample___inline-block
+body {
+  font-family: sans-serif;
+}
+p {
+  border: 2px solid rebeccapurple;
+  width: 300px;
+}
+
+span {
+  margin: 20px;
+  padding: 20px;
+  width: 80px;
+  height: 50px;
+  background-color: lightblue;
+  border: 2px solid blue;
+  display: inline-block;
+}
+```
+
+{{EmbedLiveSample("inline-block", "", "240px")}}
 
 Esto puede ser útil cuando deseas dar a un enlace un área de impacto más grande añadiendo `padding`. `<a>` es un elemento en línea como `<span>`; puedes usar `display: inline-block` para configurar el área de relleno para facilitar al usuario hacer clic en el enlace.
 
@@ -307,7 +563,42 @@ Esto se ve con bastante frecuencia en las barras de navegación. La navegación 
 
 **Añade `display: inline-block` a la regla con el selector `.links-list a` y verás cómo se soluciona este problema, al hacer que otros elementos respeten el área de relleno.**
 
-{{EmbedGHLiveSample("css-examples/learn/box-model/inline-block-nav.html", '100%', 600)}}
+```html live-sample___inline-block-nav
+<nav>
+  <ul class="links-list">
+    <li><a href="">Link one</a></li>
+    <li><a href="">Link two</a></li>
+    <li><a href="">Link three</a></li>
+  </ul>
+</nav>
+```
+
+```css live-sample___inline-block-nav
+ul {
+  font-family: sans-serif;
+  display: flex;
+  list-style: none;
+  border: 1px solid #000;
+}
+
+li {
+  margin: 5px;
+}
+
+.links-list a {
+  background-color: rgb(179 57 81);
+  color: #fff;
+  text-decoration: none;
+  padding: 1em 2em;
+}
+
+.links-list a:hover {
+  background-color: rgb(66 28 40);
+  color: #fff;
+}
+```
+
+{{EmbedLiveSample("inline-block-nav")}}
 
 ## Pon a prueba tus habilidades
 

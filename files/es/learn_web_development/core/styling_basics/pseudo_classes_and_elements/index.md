@@ -51,11 +51,55 @@ Las pseudoclases son palabras clave que comienzan con dos puntos:
 
 Echemos un vistazo a algunos ejemplos. Si queremos el primer párrafo de un artículo en letra más grande y en negrita, podemos añadir una clase a ese párrafo y luego añadirle CSS a esa clase, como se muestra en este ejemplo:
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/first-child.html", '100%', 800)}}
+```html live-sample___first-child
+<article>
+  <p class="first">
+    Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion
+    daikon amaranth tatsoi tomatillo melon azuki bean garlic.
+  </p>
+
+  <p>
+    Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette
+    tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato.
+    Dandelion cucumber earthnut pea peanut soko zucchini.
+  </p>
+</article>
+```
+
+```css live-sample___first-child
+.first {
+  font-size: 120%;
+  font-weight: bold;
+}
+```
+
+{{EmbedLiveSample("first-child")}}
 
 Sin embargo, podría ser complicado de mantener. ¿Y si añadiésemos un párrafo nuevo en la parte superior del documento? Habría que mover la clase para que quede antes del nuevo párrafo. En lugar de añadir la clase, podríamos utilizar el selector de pseudoclase {{cssxref(":first-child")}}, que _siempre_ seleccionará el primer elemento hijo del artículo, y de esta forma no tendremos que editar el código HTML (esto no siempre es posible, tal vez debido a que lo genera un CMS).
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/first-child2.html", '100%', 700)}}
+```html live-sample___first-child2
+<article>
+  <p>
+    Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion
+    daikon amaranth tatsoi tomatillo melon azuki bean garlic.
+  </p>
+
+  <p>
+    Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette
+    tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato.
+    Dandelion cucumber earthnut pea peanut soko zucchini.
+  </p>
+</article>
+```
+
+```css live-sample___first-child2
+article p:first-child {
+  font-size: 120%;
+  font-weight: bold;
+}
+```
+
+{{EmbedLiveSample("first-child2")}}
 
 Todas las pseudoclases se comportan del mismo modo. Seleccionan un fragmento del documento que está en un estado determinado y se comportan como si se hubiera añadido una clase a su HTML. Echa un vistazo a otros ejemplos en MDN:
 
@@ -73,7 +117,23 @@ Algunas pseudoclases solo intervienen cuando el usuario interactúa con el docum
 - [`:hover`](/es/docs/Web/CSS/:hover): solo interviene si el usuario pasa el cursor sobre un elemento, normalmente un enlace.
 - [`:focus`](/es/docs/Web/CSS/:focus): solo interviene si el usuario selecciona el elemento con los controles del teclado.
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/hover.html", '100%', 500)}}
+```html live-sample___hover
+<p><a href="">Hover over me</a></p>
+```
+
+```css live-sample___hover
+a:link,
+a:visited {
+  color: rebeccapurple;
+  font-weight: bold;
+}
+
+a:hover {
+  color: hotpink;
+}
+```
+
+{{EmbedLiveSample("hover")}}
 
 ## ¿Qué es un pseudoelemento?
 
@@ -90,7 +150,29 @@ Por ejemplo, si deseas seleccionar la primera línea de un párrafo simplemente 
 
 El pseudoelemento `::first-line` soluciona este problema: no importa si el número de palabras aumenta o disminuye, siempre se selecciona la primera línea.
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/first-line.html", '100%', 800)}}
+```html live-sample___first-line
+<article>
+  <p>
+    Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion
+    daikon amaranth tatsoi tomatillo melon azuki bean garlic.
+  </p>
+
+  <p>
+    Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette
+    tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato.
+    Dandelion cucumber earthnut pea peanut soko zucchini.
+  </p>
+</article>
+```
+
+```css live-sample___first-line
+article p::first-line {
+  font-size: 120%;
+  font-weight: bold;
+}
+```
+
+{{EmbedLiveSample("first-line")}}
 
 Actúa como si hubiera un elemento `<span>` mágicamente delimitando esa primera línea, que se actualiza cada vez que la longitud de la línea cambia.
 
@@ -113,19 +195,54 @@ Hay un par de pseudoelementos especiales que se utilizan junto con la propiedad 
 
 Puedes utilizarlos para insertar una cadena de texto, como en el ejemplo siguiente. Intenta cambiar el valor del texto de la propiedad {{cssxref("content")}} y observa el cambio en la salida. También puedes cambiar el pseudoelemento `::before` por `::after` y verás que el texto se inserta al final del elemento, en lugar de al principio.
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/before.html", '100%', 400)}}
+```html live-sample___before
+<p class="box">Content in the box in my HTML page.</p>
+```
+
+```css live-sample___before
+.box::before {
+  content: "This should show before the other content. ";
+}
+```
+
+{{EmbedLiveSample("before")}}
 
 Sin embargo, en realidad no es habitual insertar cadenas de texto desde el CSS, porque ese texto resulta inaccesible para algunos lectores de pantalla y puede ser difícil de buscar y modificar en el futuro.
 
 Un uso más adecuado de estos pseudoelementos es insertar un icono. Por ejemplo, la pequeña flecha que añadimos en el ejemplo siguiente es un indicador visual que no queremos que el lector de pantalla muestre:
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/after-icon.html", '100%', 400)}}
+```html live-sample___after-icon
+<p class="box">Content in the box in my HTML page.</p>
+```
+
+```css live-sample___after-icon
+.box::after {
+  content: " ➥";
+}
+```
+
+{{EmbedLiveSample("after-icon")}}
 
 Estos pseudoelementos también se utilizan con frecuencia para insertar una cadena vacía a la que luego se le puede aplicar estilo, como a cualquier otro elemento de la página.
 
 En el ejemplo siguiente hemos añadido una cadena vacía mediante el pseudoelemento `::before`. Le hemos asociado `display: block` para poder aplicarle estilo para que tenga una anchura y una altura determinadas. A continuación, utilizamos el CSS para aplicar estilo de la misma forma que lo haríamos con cualquier otro elemento. Juega con el CSS y cambia la forma en que se ve y se comporta.
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/before-styled.html", '100%', 500)}}
+```html live-sample___before-styled
+<p class="box">Content in the box in my HTML page.</p>
+```
+
+```css live-sample___before-styled
+.box::before {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 100px;
+  background-color: rebeccapurple;
+  border: 1px solid black;
+}
+```
+
+{{EmbedLiveSample("before-styled", "", "160")}}
 
 El uso de los pseudoelementos `::before` y `::after`, junto con la propiedad `content` se conoce como «contenido generado» en CSS, y verás que esta técnica se utiliza a menudo para diversas tareas. Un buen ejemplo es la página web [CSS Arrow Please](http://www.cssarrowplease.com/), que te ayuda a generar una flecha con CSS. Echa un vistazo al CSS a medida que creas tu flecha y verás cómo funcionan los pseudoelementos {{cssxref("::before")}} y {{cssxref("::after")}}. Cada vez que veas estos selectores, echa un vistazo a la propiedad {{cssxref("content")}} para ver qué se añade al documento.
 

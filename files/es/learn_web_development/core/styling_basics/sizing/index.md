@@ -44,11 +44,33 @@ Los elementos HTML tienen un tamaño natural, establecido antes de que se vean a
 
 Si colocas una imagen en una página y no cambias su altura y ancho, ya sea usando atributos en la etiqueta `<img>` o el CSS, se mostrará con ese tamaño intrínseco. En el ejemplo siguiente le hemos dado un borde a la imagen para que puedas ver la extensión del archivo.
 
-{{EmbedGHLiveSample("css-examples/learn/sizing/intrinsic-image.html", '100%', 600)}}
+```html live-sample___intrinsic-image
+<img
+  alt="star"
+  src="https://mdn.github.io/shared-assets/images/examples/big-star.png" />
+```
+
+```css live-sample___intrinsic-image
+img {
+  border: 5px solid darkblue;
+}
+```
+
+{{EmbedLiveSample("intrinsic-image")}}
 
 Sin embargo, un elemento {{htmlelement ("div")}} vacío no tiene tamaño propio. Si añades un elemento {{htmlelement ("div")}} sin contenido a tu HTML, entonces debes darle un borde como hemos hecho con la imagen y verás una línea en la página. Se trata del borde del elemento replegado sobre sí mismo porque no hay contenido para mantenerlo abierto. En nuestro ejemplo siguiente, ese borde se extiende por todo el ancho del contenedor, porque es un elemento de nivel de bloque, un comportamiento con el que deberías comenzar a familiarizarte. No tiene altura (o tamaño en la dimensión de bloque) porque no hay contenido.
 
-{{EmbedGHLiveSample("css-examples/learn/sizing/intrinsic-text.html", '100%', 500)}}
+```html live-sample___intrinsic-text
+<div class="box"></div>
+```
+
+```css live-sample___intrinsic-text
+.box {
+  border: 5px solid darkblue;
+}
+```
+
+{{EmbedLiveSample("intrinsic-text")}}
 
 En el ejemplo anterior, añade texto al elemento vacío. Ahora el borde contiene ese texto porque la altura del elemento queda definida por el contenido. Por lo tanto, el tamaño de este elemento `<div>` en la dimensión del bloque proviene del tamaño del contenido. Nuevamente, este es el tamaño intrínseco del elemento: su tamaño está definido por su contenido.
 
@@ -56,7 +78,36 @@ En el ejemplo anterior, añade texto al elemento vacío. Ahora el borde contiene
 
 Por supuesto, podemos dar a los elementos de nuestro diseño un tamaño específico. Cuando asignas un tamaño a un elemento (al cual deberá ajustarse el contenido del elemento) nos referimos a este como **tamaño extrínseco**. Toma nuestro elemento `<div>` del ejemplo anterior: podemos darle valores específicos como {{cssxref ("width")}} y {{cssxref ("height")}}, y así tendrá ese tamaño sea cual sea su contenido. Como descubrimos en [nuestro artículo anterior sobre el desbordamiento](/es/docs/Learn/CSS/Building_blocks/Overflowing_content), una altura establecida puede causar el desbordamiento del contenido si hay más contenido del que cabe en el elemento.
 
-{{EmbedGHLiveSample("css-examples/learn/sizing/height.html", '100%', 600)}}
+```html live-sample___height
+<div class="wrapper">
+  <div class="box"></div>
+  <div class="box">
+    These boxes both have a height set, this box has content in it which will
+    need more space than the assigned height, and so we get overflow.
+  </div>
+</div>
+```
+
+```css live-sample___height
+body {
+  font: 1.2em sans-serif;
+}
+.wrapper {
+  display: flex;
+}
+
+.wrapper > * {
+  margin: 20px;
+}
+
+.box {
+  border: 5px solid darkblue;
+  height: 100px;
+  width: 200px;
+}
+```
+
+{{EmbedLiveSample("height", "", "200px")}}
 
 Debido a este problema de desbordamiento, fijar la altura de los elementos con longitudes o porcentajes es algo que debemos hacer con mucho cuidado en la web.
 
@@ -64,7 +115,22 @@ Debido a este problema de desbordamiento, fijar la altura de los elementos con l
 
 En muchos sentidos, los porcentajes actúan como unidades de longitud, y como discutimos en el [artículo sobre valores y unidades](/es/docs/Learn/CSS/Building_blocks/Values_and_units#porcentajes), a menudo se pueden usar indistintamente con longitudes. Cuando usas un porcentaje, debes tener claro de qué es porcentaje. En el caso de una caja dentro de otro contenedor, si a la caja secundaria le asignas un porcentaje al ancho, será un porcentaje del ancho del contenedor principal.
 
-{{EmbedGHLiveSample("css-examples/learn/sizing/percent-width.html", '100%', 600)}}
+```html live-sample___percent-width
+<div class="box">I have a percentage width.</div>
+```
+
+```css live-sample___percent-width
+body {
+  font: 1.2em sans-serif;
+}
+
+.box {
+  border: 5px solid darkblue;
+  width: 50%;
+}
+```
+
+{{EmbedLiveSample("percent-width")}}
 
 Esto se debe a que los porcentajes se refieren al tamaño del bloque contenedor. Sin un porcentaje aplicado, nuestro elemento `<div>` ocuparía el 100% del espacio disponible, porque es un elemento de nivel de bloque. Si le damos un ancho porcentual, este se convierte en un porcentaje del espacio que normalmente ocuparía.
 
@@ -72,7 +138,23 @@ Esto se debe a que los porcentajes se refieren al tamaño del bloque contenedor.
 
 Si configuras `margins` y `padding` como un porcentaje, puede que observes un comportamiento extraño. En el ejemplo siguiente hay una caja. Hemos asignado a la caja interna un margen ({{cssxref ("margin")}}) del 10% y una área de relleno ({{cssxref ("padding")}}) del 10%. El área de relleno y el margen de la parte superior e inferior de la caja son del mismo tamaño que el margen de la izquierda y de la derecha.
 
-{{EmbedGHLiveSample("css-examples/learn/sizing/percent-mp.html", '100%', 700)}}
+```html live-sample___percent-mp
+<div class="box">I have margin and padding set to 10% on all sides.</div>
+```
+
+```css live-sample___percent-mp
+body {
+  font: 1.2em sans-serif;
+}
+.box {
+  border: 5px solid darkblue;
+  width: 200px;
+  margin: 10%;
+  padding: 10%;
+}
+```
+
+{{EmbedLiveSample("percent-mp", "", "380px")}}
 
 Podrías esperar, por ejemplo, que el porcentaje de los márgenes superior e inferior sea un porcentaje de la altura del elemento, y el porcentaje de los márgenes izquierdo y derecho sea un porcentaje del ancho del elemento. Sin embargo, ¡este no es el caso!
 
@@ -84,7 +166,38 @@ Además de asignar a las cosas un tamaño fijo, podemos pedirle al CSS que asign
 
 En el ejemplo siguiente puedes ver dos cuadros, ambos con una altura definida de 150 píxeles. La caja de la izquierda tiene 150 píxeles de alto; la de la derecha contiene contenido que necesita más espacio, por lo que su tamaño supera los 150 píxeles.
 
-{{EmbedGHLiveSample("css-examples/learn/sizing/min-height.html", '100%', 800)}}
+```html live-sample___min-height
+<div class="wrapper">
+  <div class="box"></div>
+  <div class="box">
+    These boxes both have a min-height set, this box has content in it which
+    will need more space than the assigned height, and so it grows from the
+    minimum.
+  </div>
+</div>
+```
+
+```css live-sample___min-height
+body {
+  font: 1.2em sans-serif;
+}
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.wrapper > * {
+  margin: 20px;
+}
+
+.box {
+  border: 5px solid darkblue;
+  min-height: 100px;
+  width: 200px;
+}
+```
+
+{{EmbedLiveSample("min-height", "", "220px")}}
 
 Esto es muy útil para trabajar con cantidades de contenido variables y asimismo evitar desbordamientos.
 
@@ -96,7 +209,61 @@ Si en lugar de ello usas `max-width: 100%`, la imagen puede encogerse con respec
 
 En el ejemplo siguiente hemos utilizado la misma imagen dos veces. La primera imagen tiene `width: 100%` y está en un contenedor que es más grande, por lo que se extiende hasta el ancho del contenedor. La segunda imagen tiene `max-width: 100%` y, por lo tanto, no se estira para llenar el recipiente. La tercera caja contiene la misma imagen de nuevo, también con `max-width: 100%`; pero en este caso puedes ver cómo se ha reducido para encajar en la caja.
 
-{{EmbedGHLiveSample("css-examples/learn/sizing/max-width.html", '100%', 800)}}
+```html live-sample___max-width
+<div class="wrapper">
+  <div class="box">
+    <img
+      alt="star"
+      class="width"
+      src="https://mdn.github.io/shared-assets/images/examples/big-star.png" />
+  </div>
+  <div class="box">
+    <img
+      alt="star"
+      class="max"
+      src="https://mdn.github.io/shared-assets/images/examples/big-star.png" />
+  </div>
+  <div class="mini-box">
+    <img
+      alt="star"
+      class="max"
+      src="https://mdn.github.io/shared-assets/images/examples/big-star.png" />
+  </div>
+</div>
+```
+
+```css hidden live-sample___max-width
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.wrapper > * {
+  margin: 20px;
+}
+
+.box,
+.mini-box {
+  border: 5px solid darkblue;
+}
+```
+
+```css live-sample___max-width
+.box {
+  width: 200px;
+}
+.mini-box {
+  width: 50px;
+}
+.width {
+  width: 100%;
+}
+.max {
+  max-width: 100%;
+}
+```
+
+{{EmbedLiveSample("max-width", "", "260px")}}
 
 Esta técnica se utiliza para dar a las imágenes una respuesta _adaptativa_, de modo que se reduzcan adecuadamente cuando se visualizan en un dispositivo más pequeño. Sin embargo, no es conveniente usar esta técnica para cargar imágenes demasiado grandes y luego reducirlas en el navegador. Las imágenes deben tener el tamaño adecuado, no deben ser más grandes de lo que sea necesario para el tamaño más grande que se muestran en el diseño. Descargar imágenes muy grandes ralentizará tu sitio y puede costarles más dinero a los usuarios si tienen una conexión tarifada.
 
@@ -109,7 +276,24 @@ La ventana gráfica es el área visible de tu página en el navegador que utiliz
 
 `1vh` es igual al 1% de la altura de visualización, y `1vw` es igual al 1% de la anchura. Puedes usar estas unidades para dimensionar cajas, pero también texto. En el ejemplo siguiente hay un cuadro que tiene un tamaño de 20vh y 20vw. La caja contiene una letra `A`, a la que se le ha dado un valor para {{cssxref ("font-size")}} de 10vh.
 
-{{EmbedGHLiveSample("css-examples/learn/sizing/vw-vh.html", '100%', 600)}}
+```html live-sample___vw-vh
+<div class="box">A</div>
+```
+
+```css live-sample___vw-vh
+body {
+  font-family: sans-serif;
+}
+
+.box {
+  border: 5px solid darkblue;
+  width: 20vw;
+  height: 20vh;
+  font-size: 10vh;
+}
+```
+
+{{EmbedLiveSample("vw-vh")}}
 
 **Si cambias los valores `vh` y `vw`, cambia el tamaño de la caja o de la letra; cambiar el tamaño de la ventana gráfica también cambia esos tamaños porque están dimensionados en relación con el de la ventana gráfica. Para ver el cambio del ejemplo cuando cambias el tamaño de la ventana gráfica, debes cargar el ejemplo en una ventana nueva del navegador, que pueda cambiar de tamaño (ya que tu ventana gráfica es el `<iframe>` incrustado que contiene el ejemplo que se muestra arriba). [Abre el ejemplo](https://mdn.github.io/css-examples/learn/sizing/vw-vh.html), cambia el tamaño de la ventana del navegador y observa lo que ocurre con el tamaño de la caja y el texto.**
 

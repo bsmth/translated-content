@@ -64,7 +64,29 @@ En el ejemplo siguiente hemos utilizado varios valores de color para añadir un 
 
 **Juega un poco con ellos; usa cualquier valor [\<color>](/es/docs/Web/CSS/color_value) disponible.**
 
-{{EmbedGHLiveSample("css-examples/learn/backgrounds-borders/color.html", '100%', 800)}}
+```html live-sample___color
+<div class="box">
+  <h2>Background Colors</h2>
+  <p>Try changing the background <span>colors</span>.</p>
+</div>
+```
+
+```css live-sample___color
+.box {
+  padding: 0.3em;
+  background-color: #567895;
+}
+
+h2 {
+  background-color: black;
+  color: white;
+}
+span {
+  background-color: rgb(255 255 255 / 50%);
+}
+```
+
+{{EmbedLiveSample("color")}}
 
 ### Las imágenes de fondo
 
@@ -72,7 +94,36 @@ La propiedad {{cssxref ("background-image")}} permite visualizar una imagen de f
 
 Este ejemplo demuestra dos cosas sobre las imágenes de fondo. De forma predeterminada, la imagen grande no se reduce para ajustarse a la caja, por lo que solo vemos una pequeña esquina de esta, mientras que la imagen pequeña aparece en forma de mosaico hasta llenar la caja. En este caso, la imagen es en realidad una sola estrella.
 
-{{EmbedGHLiveSample("css-examples/learn/backgrounds-borders/background-image.html", '100%', 800)}}
+```html live-sample___background-image
+<div class="wrapper">
+  <div class="box a"></div>
+  <div class="box b"></div>
+</div>
+```
+
+```css live-sample___background-image
+.wrapper {
+  display: flex;
+}
+
+.box {
+  width: 200px;
+  height: 80px;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  margin: 20px;
+}
+
+.a {
+  background-image: url(https://mdn.github.io/shared-assets/images/examples/balloons.jpg);
+}
+
+.b {
+  background-image: url(https://mdn.github.io/shared-assets/images/examples/star.png);
+}
+```
+
+{{EmbedLiveSample("background-image")}}
 
 **Si especificas un color de fondo además de una imagen de fondo, la imagen se muestra encima del color de fondo. Añade una propiedad `background-color` al ejemplo anterior y obsérvalo en acción.**
 
@@ -87,7 +138,28 @@ La propiedad {{cssxref ("background-repeat")}} se usa para controlar el comporta
 
 **Prueba estos valores en el ejemplo siguiente. Hemos establecido el valor `no-repeat`, así que solo verás una estrella. Prueba los diferentes valores (`repeat-x` y `repeat-y`) y observa cuáles son los efectos.**
 
-{{EmbedGHLiveSample("css-examples/learn/backgrounds-borders/repeat.html", '100%', 800)}}
+```html live-sample___repeat
+<div class="box"></div>
+```
+
+```css hidden live-sample___repeat
+.box {
+  width: 200px;
+  height: 80px;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  margin: 20px;
+}
+```
+
+```css live-sample___repeat
+.box {
+  background-image: url(https://mdn.github.io/shared-assets/images/examples/star.png);
+  background-repeat: no-repeat;
+}
+```
+
+{{EmbedLiveSample("repeat")}}
 
 #### Dimensionar la imagen de fondo
 
@@ -106,7 +178,29 @@ Prueba lo siguiente:
 - Elimina las unidades de longitud y observa qué sucede cuando usas `background-size: cover` o `background-size: contain`.
 - Si tu imagen es más pequeña que la caja, puedes cambiar el valor `background-repeat` para que la imagen se repita.
 
-{{EmbedGHLiveSample("css-examples/learn/backgrounds-borders/size.html", '100%', 800)}}
+```html live-sample___size
+<div class="box"></div>
+```
+
+```css hidden live-sample___size
+.box {
+  width: 500px;
+  height: 100px;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  margin: 10px;
+}
+```
+
+```css live-sample___size
+.box {
+  background-image: url(https://mdn.github.io/shared-assets/images/examples/balloons.jpg);
+  background-repeat: no-repeat;
+  background-size: 80px 10em;
+}
+```
+
+{{EmbedLiveSample("size")}}
 
 #### Posicionar la imagen de fondo
 
@@ -159,7 +253,29 @@ Por último, también puedes usar una sintaxis de 4 valores para indicar una dis
 
 **Utiliza el ejemplo siguiente para jugar con estos valores y mover la estrella por la caja.**
 
-{{EmbedGHLiveSample("css-examples/learn/backgrounds-borders/position.html", '100%', 800)}}
+```html live-sample___position
+<div class="box"></div>
+```
+
+```css hidden live-sample___position
+.box {
+  width: 500px;
+  height: 80px;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  margin: 20px;
+}
+```
+
+```css live-sample___position
+.box {
+  background-image: url(https://mdn.github.io/shared-assets/images/examples/star.png);
+  background-repeat: no-repeat;
+  background-position: 120px 1em;
+}
+```
+
+{{EmbedLiveSample("position")}}
 
 > **Nota:** `background-position` es una propiedad abreviada de {{cssxref("background-position-x")}} y {{cssxref("background-position-y")}}, que te permiten configurar los diferentes valores de posición del eje por separado.
 
@@ -171,7 +287,45 @@ Puedes leer más sobre los diferentes tipos de degradados y sobre qué puedes ha
 
 Prueba algunos degradados diferentes en el ejemplo siguiente. En las dos cajas hay, respectivamente, un degradado lineal que se extiende por toda la caja, y un degradado radial con un tamaño establecido, que por lo tanto se repite.
 
-{{EmbedGHLiveSample("css-examples/learn/backgrounds-borders/gradients.html", '100%', 800)}}
+```html live-sample___gradients
+<div class="wrapper">
+  <div class="box a"></div>
+  <div class="box b"></div>
+</div>
+```
+
+```css live-sample___gradients
+.wrapper {
+  display: flex;
+}
+
+.box {
+  width: 400px;
+  height: 80px;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  margin: 20px;
+}
+
+.a {
+  background-image: linear-gradient(
+    105deg,
+    rgb(0 249 255 / 100%) 39%,
+    rgb(51 56 57 / 100%) 96%
+  );
+}
+
+.b {
+  background-image: radial-gradient(
+    circle,
+    rgb(0 249 255 / 100%) 39%,
+    rgb(51 56 57 / 100%) 96%
+  );
+  background-size: 100px 50px;
+}
+```
+
+{{EmbedLiveSample("gradients")}}
 
 ### Múltiples imágenes de fondo
 
@@ -197,7 +351,33 @@ Cada valor de las diversas propiedades coincide con los valores que están en la
 
 **Vamos a jugar. En el ejemplo siguiente hemos incluido dos imágenes. Para demostrar el orden de superposición, cambia la imagen de fondo que aparece primero en la lista. O juega con las otras propiedades para cambiar la posición, el tamaño o repite los valores.**
 
-{{EmbedGHLiveSample("css-examples/learn/backgrounds-borders/multiple-background-image.html", '100%', 800)}}
+```html live-sample___multiple-background-image
+<div class="wrapper">
+  <div class="box"></div>
+</div>
+```
+
+```css live-sample___multiple-background-image
+.wrapper {
+  display: flex;
+}
+
+.box {
+  width: 500px;
+  height: 80px;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  margin: 20px;
+}
+
+.box {
+  background-image:
+    url(https://mdn.github.io/shared-assets/images/examples/star.png),
+    url(https://mdn.github.io/shared-assets/images/examples/big-star.png);
+}
+```
+
+{{EmbedLiveSample("multiple-background-image")}}
 
 ### Anclaje del fondo
 
@@ -222,7 +402,29 @@ Al escribir los valores abreviados de las imágenes de fondo es necesario seguir
 
 Consulta la página para el atributo {{cssxref ("background")}} de MDN para ver todas las posibilidades.
 
-{{EmbedGHLiveSample("css-examples/learn/backgrounds-borders/background.html", '100%', 800)}}
+```html live-sample___background
+<div class="box"></div>
+```
+
+```css live-sample___background
+.box {
+  width: 500px;
+  height: 300px;
+  padding: 0.5em;
+  background:
+    linear-gradient(
+        105deg,
+        rgb(255 255 255 / 20%) 39%,
+        rgb(51 56 57 / 100%) 96%
+      )
+      center center / 400px 200px no-repeat,
+    url(https://mdn.github.io/shared-assets/images/examples/big-star.png) center
+      no-repeat,
+    rebeccapurple;
+}
+```
+
+{{EmbedLiveSample("background", "", "320px")}}
 
 ### Consideraciones de accesibilidad con los fondos
 
@@ -275,7 +477,32 @@ Y las no abreviadas:
 
 **Hay una variedad de estilos que puedes usar para los bordes. En el ejemplo siguiente, hemos utilizado un estilo de borde diferente para los cuatro lados de la caja. Juega con el estilo, el ancho y el color del borde para ver cómo funcionan los bordes.**
 
-{{EmbedGHLiveSample("css-examples/learn/backgrounds-borders/borders.html", '100%', 800)}}
+```html live-sample___borders
+<div class="box">
+  <h2>Borders</h2>
+  <p>Try changing the borders.</p>
+</div>
+```
+
+```css live-sample___borders
+* {
+  padding: 0.2em;
+}
+.box {
+  width: 500px;
+  background-color: #567895;
+  border: 5px solid #0b385f;
+  border-bottom-style: dashed;
+  color: #fff;
+}
+
+h2 {
+  border-top: 2px dotted rebeccapurple;
+  border-bottom: 1em double rgb(24 163 78);
+}
+```
+
+{{EmbedLiveSample("borders", "", "200px")}}
 
 ### Esquinas redondeadas
 
@@ -299,7 +526,25 @@ O para hacer que la esquina superior derecha tenga un radio horizontal de 1 em y
 
 En el ejemplo siguiente hemos establecido las cuatro esquinas, y luego cambiamos los valores de la esquina superior derecha para que sea diferente. Juega con los valores para cambiar las esquinas. Echa un vistazo a la página de la propiedad {{cssxref ("border-radius")}} para ver las opciones de sintaxis disponibles.
 
-{{EmbedGHLiveSample("css-examples/learn/backgrounds-borders/corners.html", '100%', 800)}}
+```html live-sample___corners
+<div class="box">
+  <h2>Borders</h2>
+  <p>Try changing the borders.</p>
+</div>
+```
+
+```css live-sample___corners
+.box {
+  width: 500px;
+  height: 110px;
+  padding: 0.5em;
+  border: 10px solid rebeccapurple;
+  border-radius: 1em;
+  border-top-right-radius: 10% 30%;
+}
+```
+
+{{EmbedLiveSample("corners")}}
 
 ## Pon a prueba tus habilidades
 

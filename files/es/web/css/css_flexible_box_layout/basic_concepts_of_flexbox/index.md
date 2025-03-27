@@ -75,7 +75,28 @@ El resultado es que todos los ítems se alinearán en una solo fila, usando el t
 
 Se puede ver en el ejercicio en vivo de abajo cómo luce. Intente editar el ítem o añadir ítems adicionales para así probar el comportamiento inicial de flexbox.
 
-{{EmbedGHLiveSample("css-examples/flexbox/basics/the-flex-container.html", '100%', 480)}}
+```html live-sample___the-flex-container
+<div class="box">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three <br />has <br />extra <br />text</div>
+</div>
+```
+
+```css live-sample___the-flex-container
+.box > * {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+}
+
+.box {
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+}
+```
+
+{{EmbedLiveSample("the-flex-container")}}
 
 ### Cambiar flex-direction
 
@@ -85,7 +106,29 @@ Si cambiamos `flex-direction` a `column` el eje principal se cambiará y los ít
 
 El ejemplo en vivo de abajo tiene `flex-direction` puesto como `row-reverse`. Pruebe los otros valores — `row`, `column` y `column-reverse` — para ver qué sucede con el contenido.
 
-{{EmbedGHLiveSample("css-examples/flexbox/basics/flex-direction.html", '100%', 350)}}
+```html live-sample___flex-direction
+<div class="box">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</div>
+```
+
+```css live-sample___flex-direction
+.box > * {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+}
+
+.box {
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+  flex-direction: row-reverse;
+}
+```
+
+{{EmbedLiveSample("flex-direction")}}
 
 ## Contenedores flex Multi-línea con flex-wrap
 
@@ -93,7 +136,31 @@ Si bien flexbox es un modelo unidimensional, es posible lograr que nuestros íte
 
 Para lograr repartirse en varias líneas añada la propiedad {{cssxref("flex-wrap")}} con el valor `wrap`. Cuando los ítems sean demasiados para desplegarlos en una línea, serán repartidos en la línea siguiente. El ejemplo en vivo de abajo contiene ítems que se les ha asignando un ancho, donde el ancho total de los ítems excede al del contenedor flex. Cuando `flex-wrap` se coloca como `wrap`, los ítems se repartirán. Al colocarlo como `nowrap`, el cual es el valor inicial, estos se contraerán para calzar con el contenedor ya que usan los valores iniciales de flexbox que permiten que los ítems se contraigan. Al usar `nowrap` los ítems podrían salirse del margen si estos no pudieran contraerse, o no contraerse lo suficiente para ser calzados.
 
-{{EmbedGHLiveSample("css-examples/flexbox/basics/flex-wrap.html", '100%', 400)}}
+```html live-sample___flex-wrap
+<div class="box">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</div>
+```
+
+```css live-sample___flex-wrap
+.box > * {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  width: 200px;
+}
+
+.box {
+  width: 500px;
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+  flex-wrap: wrap;
+}
+```
+
+{{EmbedLiveSample("flex-wrap")}}
 
 ## La abreviatura flex-flow
 
@@ -101,7 +168,31 @@ Se pueden combinar las propiedades `flex-direction` y `flex-wrap` en la abreviat
 
 En el ejemplo en vivo de abajo intente cambiar el primer valor por uno de los valores permitidos para `flex-direction` - `row`, `row-reverse`, `column` o `column-reverse`, y cambie también el segundo valor por `wrap` y `nowrap`.
 
-{{EmbedGHLiveSample("css-examples/flexbox/basics/flex-flow.html", '100%', 400)}}
+```html live-sample___flex-flow
+<div class="box">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</div>
+```
+
+```css live-sample___flex-flow
+.box > * {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  width: 200px;
+}
+
+.box {
+  width: 500px;
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+  flex-flow: row wrap;
+}
+```
+
+{{EmbedLiveSample("flex-flow")}}
 
 ## Propiedades aplicadas a los ítems flex
 
@@ -150,7 +241,40 @@ Difícilmente veremos la propiedades `flex-grow`, `flex-shrink` y `flex-basis` u
 
 El ejemplo en vivo de más abajo permite probar los diferentes valores de la abreviación flex; recuerde que el primer valor es `flex-grow`. Dándole un valor positivo significa que el ítem puede crecer. El segundo es `flex-shrink` — con un valor positivo los ítems pueden contraerse. El valor final es `flex-basis`; este es el valor que los ítems usan como valor base para crecer y contraerse.
 
-{{EmbedGHLiveSample("css-examples/flexbox/basics/flex-properties.html", '100%', 400)}}
+```html live-sample___flex-properties
+<div class="box">
+  <div class="one">One</div>
+  <div class="two">Two</div>
+  <div class="three">Three</div>
+</div>
+```
+
+```css live-sample___flex-properties
+.box > * {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+}
+
+.box {
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+}
+
+.one {
+  flex: 1 1 auto;
+}
+
+.two {
+  flex: 1 1 auto;
+}
+
+.three {
+  flex: 1 1 auto;
+}
+```
+
+{{EmbedLiveSample("flex-properties")}}
 
 Hay además algunas abreviaturas de valores que cubren la mayoría de los casos de uso. Se ven con frecuencia utilizados en tutoriales, y en muchos casos es todo lo que necesitamos usar. Los valores predefinidos son los siguientes:
 
@@ -169,7 +293,40 @@ Una abreviación que es común en tutoriales es `flex: 1` o `flex: 2` y más. Es
 
 Pruebe estas abreviaciones de valores en el ejemplo en vivo de abajo.
 
-{{EmbedGHLiveSample("css-examples/flexbox/basics/flex-shorthands.html", '100%', 480)}}
+```html live-sample___flex-shorthands
+<div class="box">
+  <div class="one">One</div>
+  <div class="two">Two</div>
+  <div class="three">Three</div>
+</div>
+```
+
+```css live-sample___flex-shorthands
+.box > * {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+}
+
+.box {
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+}
+
+.one {
+  flex: 1;
+}
+
+.two {
+  flex: 1;
+}
+
+.three {
+  flex: 1;
+}
+```
+
+{{EmbedLiveSample("flex-shorthands")}}
 
 ## Alineación, justificación y distribución del espacio libre entre ítems
 
@@ -188,7 +345,31 @@ En cambio definimos `align-items` como `flex-start` para que los ítems se aline
 - `flex-end`
 - `center`
 
-{{EmbedGHLiveSample("css-examples/flexbox/basics/align-items.html", '100%', 520)}}
+```html live-sample___align-items
+<div class="box">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three <br />has <br />extra <br />text</div>
+</div>
+```
+
+```css live-sample___align-items
+.box > * {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+}
+
+.box {
+  width: 500px;
+  height: 130px;
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+  align-items: flex-start;
+}
+```
+
+{{EmbedLiveSample("align-items")}}
 
 ### `justify-content`
 
@@ -205,7 +386,29 @@ Pruebe con los siguientes valores de `justify-content` en el ejemplo en vivo:
 - `space-around`
 - `space-between`
 
-{{EmbedGHLiveSample("css-examples/flexbox/basics/justify-content.html", '100%', 380)}}
+```html live-sample___justify-content
+<div class="box">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</div>
+```
+
+```css live-sample___justify-content
+.box > * {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+}
+
+.box {
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+  justify-content: flex-start;
+}
+```
+
+{{EmbedLiveSample("justify-content")}}
 
 En un próximo artículo ahondaremos sobre estas propiedades, con el fin de obtener mejor entendimiento de cómo funcionan. Sin embargo, estos sencillos ejemplos serán útiles para la mayoría de los casos de uso.
 

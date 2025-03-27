@@ -73,7 +73,69 @@ Una caja usa propiedades físicas y la otra usa propiedades lógicas. Intenta ca
 
 También puedes intentar cambiar el modo de escritura (`writing-mode`) de `horizontal-tb` a `vertical-rl`. De nuevo, notarás cómo las márgenes permanecen en el mismo lugar de la primera caja, pero cambia para seguir la dirección del texto en el segundo.
 
-{{EmbedGHLiveSample("css-examples/logical/margin-longhands.html", '100%', 700)}}
+```html live-sample___margin-longhands
+<div class="container">
+  <div class="inner">
+    <div class="physical box">
+      margin-top: 5px<br />
+      margin-right: 0<br />
+      margin-bottom: 2em<br />
+      margin-left: 50px
+    </div>
+  </div>
+  <div class="inner">
+    <div class="logical box">
+      margin-block-start: 5px<br />
+      margin-inline-end: 0<br />
+      margin-block-end: 2em<br />
+      margin-inline-start: 50px
+    </div>
+  </div>
+</div>
+```
+
+```css hidden live-sample___margin-longhands
+body {
+  font: 1.2em / 1.5 sans-serif;
+}
+.container {
+  display: flex;
+}
+.inner {
+  border: 2px dotted grey;
+}
+.box {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  padding: 10px;
+  width: 220px;
+  height: 220px;
+}
+```
+
+```css live-sample___margin-longhands
+.box {
+  writing-mode: horizontal-tb;
+  direction: ltr;
+}
+
+.physical {
+  margin-top: 5px;
+  margin-right: 0;
+  margin-bottom: 2em;
+  margin-left: 50px;
+}
+
+.logical {
+  margin-block-start: 5px;
+  margin-inline-end: 0;
+  margin-block-end: 2em;
+  margin-inline-start: 50px;
+}
+```
+
+{{EmbedLiveSample("margin-longhands", "", "300px")}}
 
 ### Abreviaciones para márgenes
 
@@ -100,7 +162,64 @@ Intenta cambiar la propiedad `direction` a `rtl` para hacer que las cajas se mue
 
 También puedes intentar cambiar el modo de escritura (`writing-mode`) de `horizontal-tb` a `vertical-rl`. De nuevo, notarás cómo los rellenos permanecen en el mismo lugar de la primera caja, pero cambia para seguir la dirección del texto en el segundo.
 
-{{EmbedGHLiveSample("css-examples/logical/padding-longhands.html", '100%', 700)}}
+```html live-sample___padding-longhands
+<div class="container">
+  <div class="physical box">
+    padding-top: 5px<br />
+    padding-right: 0<br />
+    padding-bottom: 2em<br />
+    padding-left: 50px
+  </div>
+
+  <div class="logical box">
+    padding-block-start: 5px<br />
+    padding-inline-end: 0<br />
+    padding-block-end: 2em<br />
+    padding-inline-start: 50px
+  </div>
+</div>
+```
+
+```css hidden live-sample___padding-longhands
+body {
+  font: 1.2em / 1.5 sans-serif;
+}
+
+.container {
+  display: flex;
+}
+.box {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  margin: 10px;
+  width: 220px;
+  height: 220px;
+}
+```
+
+```css live-sample___padding-longhands
+.box {
+  writing-mode: horizontal-tb;
+  direction: ltr;
+}
+
+.physical {
+  padding-top: 5px;
+  padding-right: 0;
+  padding-bottom: 2em;
+  padding-left: 50px;
+}
+
+.logical {
+  padding-block-start: 5px;
+  padding-inline-end: 0;
+  padding-block-end: 2em;
+  padding-inline-start: 50px;
+}
+```
+
+{{EmbedLiveSample("padding-longhands", "", "300px")}}
 
 ### Abreviaciones para rellenos (paddings)
 
@@ -123,7 +242,56 @@ Las propiedades del borde son la razón principal por la que las propiedades y v
 
 El siguiente demo usa algunas _longhands_ y tres valores de abreviaciones. Como con los otros demos, intenta cambiar la propiedad `direction` a `rtl` para que las cajas se muestren en dirección de derecha a izquierda, o cambia el modo de escritura (`writing-mode`) de `horizontal-tb` a `vertical-rl`.
 
-{{EmbedGHLiveSample("css-examples/logical/border-longhands.html", '100%', 700)}}
+```html live-sample___border-longhands
+<div class="container">
+  <div class="physical box">Borders using physical properties.</div>
+  <div class="logical box">Borders using logical properties.</div>
+</div>
+```
+
+```css hidden live-sample___border-longhands
+body {
+  font: 1.2em / 1.5 sans-serif;
+}
+
+.container {
+  display: flex;
+}
+.box {
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  margin: 10px;
+  width: 220px;
+  height: 220px;
+}
+```
+
+```css live-sample___border-longhands
+.box {
+  writing-mode: horizontal-tb;
+  direction: ltr;
+}
+
+.physical {
+  border-top: 2px solid hotpink;
+  border-right-style: dotted;
+  border-right-color: goldenrod;
+  border-right-width: 5px;
+  border-bottom: 4px double black;
+  border-left: none;
+}
+
+.logical {
+  border-block-start: 2px solid hotpink;
+  border-inline-end-style: dotted;
+  border-inline-end-color: goldenrod;
+  border-inline-end-width: 5px;
+  border-block-end: 4px double black;
+  border-inline-start: none;
+}
+```
+
+{{EmbedLiveSample("border-longhands", "", "260px")}}
 
 ### Nuevas abreviaciones para bordes
 

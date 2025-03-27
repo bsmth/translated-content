@@ -19,7 +19,60 @@ Las propiedades de este módulo también te permiten definir si las celdas dentr
 
 Esta muestra de bordes, fondos y sombras de caja consta de imágenes de fondo centradas hechas de degradados lineales y radiales. Una serie de sombras de caja hacen que el borde parezca "saltar". El elemento de la izquierda tiene un conjunto de imágenes de borde. El elemento de la derecha tiene un borde punteado redondeado.
 
-{{EmbedGHLiveSample("css-examples/modules/backgrounds.html", '100%', 430)}}
+```html hidden live-sample___backgrounds
+<article>
+  <div></div>
+  <div></div>
+</article>
+```
+
+```css hidden live-sample___backgrounds
+article {
+  display: flex;
+  gap: 10px;
+}
+div {
+  color: #58ade3;
+  height: 320px;
+  width: 240px;
+  padding: 20px;
+  margin: 10px;
+  border: dotted 15px; /* defaults to `currentcolor` */
+  border-radius: 100px 0;
+  background-image:
+    radial-gradient(
+      circle,
+      transparent 60%,
+      currentcolor 60% 70%,
+      transparent 70%
+    ),
+    linear-gradient(45deg, currentcolor, white),
+    linear-gradient(transparent, transparent);
+  /* the third transparent background image was added to provide space for the background color to show through */
+  background-color: currentcolor;
+  background-position: center;
+  background-size:
+    60px 60px,
+    120px 120px;
+  background-clip: content-box, content-box, padding-box;
+  box-shadow:
+    inset 5px 5px 5px rgb(0 0 0 / 0.4),
+    inset -5px -5px 5px rgb(0 0 0 / 0.4),
+    5px 5px 5px rgb(0 0 0 / 0.4),
+    -5px -5px 5px rgb(0 0 0 / 0.4);
+}
+div:first-of-type {
+  border-radius: 0;
+  border-image-source: repeating-conic-gradient(
+    from 3deg at 25% 25%,
+    currentColor 0 3deg,
+    transparent 3deg 6deg
+  );
+  border-image-slice: 30;
+}
+```
+
+{{EmbedLiveSample("backgrounds", "", "450px")}}
 
 Las imágenes de fondo se definen con {{cssxref("background-image")}}. Las imágenes están centradas con {{cssxref("background-position")}}. Se utilizan diferentes valores de la propiedad {{cssxref("background-clip")}} para las múltiples imágenes de fondo para hacer que las imágenes de fondo permanezcan dentro de la caja de contenido. El color de fondo se recorta en el cuadro de relleno evitando que el fondo aparezca a través de las secciones transparentes para {{cssxref("border-image")}} y {{cssxref("border-style", "dotted")}} {{cssxref("border")}}. Las esquinas redondeadas en el elemento de la derecha se crean usando la propiedad {{cssxref("border-radius")}}. Se utiliza una única declaración {{cssxref("box-shadow")}} para establecer todas las sombras, tanto de entrada como de salida.
 

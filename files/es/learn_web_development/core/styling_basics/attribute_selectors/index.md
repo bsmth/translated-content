@@ -51,7 +51,34 @@ En el ejemplo siguiente puedes observar cómo se utilizan estos selectores.
 - `li[class="a"]` relaciona un selector con una clase de `a`, pero no un selector con una clase de `a` con otra clase separada por un espacio como parte del valor. Selecciona el segundo elemento de la lista.
 - `li[class~="a"]` coincidirá con una clase `a` pero también con un valor que contenga la clase de `a` como parte de una lista de elementos separados por un espacio. Selecciona el segundo y el tercer elemento de la lista.
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/attribute.html", '100%', 800)}}
+```html live-sample___attribute
+<h1>Attribute presence and value selectors</h1>
+<ul>
+  <li>Item 1</li>
+  <li class="a">Item 2</li>
+  <li class="a b">Item 3</li>
+  <li class="ab">Item 4</li>
+</ul>
+```
+
+```css live-sample___attribute
+body {
+  font-family: sans-serif;
+}
+li[class] {
+  font-size: 120%;
+}
+
+li[class="a"] {
+  background-color: yellow;
+}
+
+li[class~="a"] {
+  color: red;
+}
+```
+
+{{EmbedLiveSample("attribute", "", "200px")}}
 
 ## Selectores coincidentes con subcadenas
 
@@ -69,7 +96,34 @@ El ejemplo siguiente muestra cómo se usan estos selectores:
 - `li[class$="a"]` relaciona cualquier valor de atributo que termina con `a`; luego, relaciona el primer y el tercer elemento de la lista.
 - `li[class*="a"]` relaciona cualquier valor de atributo que contiene `a` en cualquier posición; luego, relaciona todos los elementos de la lista.
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/attribute-substring.html", '100%', 800)}}
+```html live-sample___attribute-substring
+<h1>Attribute substring matching selectors</h1>
+<ul>
+  <li class="a">Item 1</li>
+  <li class="ab">Item 2</li>
+  <li class="bca">Item 3</li>
+  <li class="bcabc">Item 4</li>
+</ul>
+```
+
+```css live-sample___attribute-substring
+body {
+  font-family: sans-serif;
+}
+li[class^="a"] {
+  font-size: 120%;
+}
+
+li[class$="a"] {
+  background-color: yellow;
+}
+
+li[class*="a"] {
+  color: red;
+}
+```
+
+{{EmbedLiveSample("attribute-substring", "", "200px")}}
 
 ## Mayúsculas y minúsculas
 

@@ -38,7 +38,58 @@ Los valores físicos usados con las propiedades {{cssxref("float")}} y {{cssxref
 
 En el ejemplo de abajo tenemos dos cajas — la primera tiene una caja flotante con `float: left`, la segunda con `float: inline-start`. Si tu cambias el modo de escritura (`writing-mode`) a `vertical-rl` o la dirección (`direction`) a `rtl` verás que la caja flotando a la izquierda siempre se queda en la izquierda, mientras que el ítem `inline-start`-floated sigue la dirección (`direction`) y el modo de escritura (`writing-mode`).
 
-{{EmbedGHLiveSample("css-examples/logical/float.html", '100%', 700)}}
+```html live-sample___float
+<div class="container">
+  <div class="inner">
+    <div class="physical box"></div>
+    Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce
+    kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter
+    purslane kale.
+  </div>
+  <div class="inner">
+    <div class="logical box"></div>
+    Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce
+    kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter
+    purslane kale.
+  </div>
+</div>
+```
+
+```css hidden live-sample___float
+body {
+  font: 1.2em / 1.5 sans-serif;
+}
+.container {
+  display: flex;
+}
+
+.box {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  padding: 10px;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+}
+```
+
+```css live-sample___float
+.inner {
+  /* direction: rtl; */
+  /* writing-mode: vertical-rl; */
+}
+
+.physical {
+  float: left;
+}
+
+.logical {
+  float: inline-start;
+}
+```
+
+{{EmbedLiveSample("float", "", "220px")}}
 
 ## Ejemplo: Propiedades de inserción para diseño posicionado
 
@@ -50,7 +101,58 @@ Se han creado nuevas propiedades en la especificación de Propiedades Lógicas p
 
 En el siguiente ejemplo hemos usado las propiedades `inset-block-start` y `inset-inline-end` para posicionar la caja azul usando un posicionamiento absoluto dentro del área con el borde punteado de color gris, que tiene `position: relative`. Podemos cambiar la propiedad de modo de escritura (`writing-mode`) a `vertical-rl`, o agregar `direction: rtl`, y ver cómo el cuadro de flujo relativo se mantiene con la dirección del texto.
 
-{{EmbedGHLiveSample("css-examples/logical/positioning-inset.html", '100%', 700)}}
+```html live-sample___positioning-inset
+<div class="container">
+  <div class="inner">
+    <div class="physical box"></div>
+  </div>
+  <div class="inner">
+    <div class="logical box"></div>
+  </div>
+</div>
+```
+
+```css hidden live-sample___positioning-inset
+.container {
+  display: flex;
+}
+
+.inner {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  border: 2px dotted grey;
+}
+
+.box {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  padding: 10px;
+  width: 100px;
+  height: 100px;
+}
+```
+
+```css live-sample___positioning-inset
+.inner {
+  writing-mode: horizontal-tb;
+}
+
+.physical {
+  position: absolute;
+  top: 20px;
+  right: 0;
+}
+
+.logical {
+  position: absolute;
+  inset-block-start: 20px;
+  inset-inline-end: 0;
+}
+```
+
+{{EmbedLiveSample("positioning-inset", "", "250px")}}
 
 ## Nuevas abreviaciones de dos- y cuatro-valores
 
@@ -69,6 +171,43 @@ La propiedad {{cssxref("text-align")}} tiene valores lógicos que se relacionan 
 
 Si cambias el valor de la dirección (`direction`) a `rtl` verás que la alineación permanece a la derecha para el primer bloque, pero va al extremo lógico en el segundo bloque.
 
-{{EmbedGHLiveSample("css-examples/logical/text-align.html", '100%', 700)}}
+```html live-sample___text-align
+<div class="container">
+  <div class="inner physical">Aligned text</div>
+  <div class="inner logical">Aligned text</div>
+</div>
+```
+
+```css hidden live-sample___text-align
+body {
+  font: 1.2em / 1.5 sans-serif;
+}
+
+.container {
+  display: flex;
+}
+
+.inner {
+  width: 200px;
+  border: 2px dotted grey;
+  padding: 10px;
+}
+```
+
+```css live-sample___text-align
+.inner {
+  direction: ltr;
+}
+
+.physical {
+  text-align: right;
+}
+
+.logical {
+  text-align: end;
+}
+```
+
+{{EmbedLiveSample("text-align")}}
 
 Esto funciona de una manera más consistente cuando se usa la alineación de caja que usa inicio y final en lugar de direcciones físicas para la alineación.

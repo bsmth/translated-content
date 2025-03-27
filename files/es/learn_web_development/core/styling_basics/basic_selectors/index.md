@@ -78,7 +78,45 @@ h1,
 
 En el ejemplo siguiente, intenta combinar los dos selectores de modo que tengan la misma declaración. El aspecto visual debe permanecer igual tras la combinación.
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/selector-list.html", '100%', 1000)}}
+```html live-sample___selector-list
+<h1>Type selectors</h1>
+<p>
+  Veggies es bonus vobis, proinde vos postulo essum magis
+  <span>kohlrabi welsh onion</span> daikon amaranth tatsoi tomatillo melon azuki
+  bean garlic.
+</p>
+
+<p>
+  Gumbo beet greens corn soko <strong>endive</strong> gumbo gourd. Parsley
+  shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra
+  wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+</p>
+
+<p>
+  Turnip greens yarrow ricebean rutabaga <em>endive cauliflower</em> sea lettuce
+  kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter
+  purslane kale. Celery potato scallion desert raisin horseradish spinach
+</p>
+```
+
+```css live-sample___selector-list
+body {
+  font-family: sans-serif;
+}
+span {
+  background-color: yellow;
+}
+
+strong {
+  color: rebeccapurple;
+}
+
+em {
+  color: rebeccapurple;
+}
+```
+
+{{EmbedLiveSample("selector-list", "", "280px")}}
 
 Cuando agrupas los selectores de esta manera, si alguno de los selectores no es válido, el navegador sencillamente ignora toda la regla.
 

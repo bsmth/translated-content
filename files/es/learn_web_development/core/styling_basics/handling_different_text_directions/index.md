@@ -45,7 +45,24 @@ Un modo de escritura en CSS se refiere a si el texto está escrito horizontal o 
 
 En el ejemplo siguiente existe un encabezado desplegado usando `writing-mode: vertical-rl`. El texto ahora aparece vertical. El texto vertical es común en diseño gráfico, y puede ser una forma de agregar un aspecto más interesante a tu diseño web.
 
-{{EmbedGHLiveSample("css-examples/learn/writing-modes/simple-vertical.html", '100%', 800)}}
+```html live-sample___simple-vertical
+<h1>Play with writing modes</h1>
+```
+
+```css live-sample___simple-vertical
+body {
+  font-family: sans-serif;
+  height: 300px;
+}
+h1 {
+  writing-mode: vertical-rl;
+  color: white;
+  background-color: black;
+  padding: 10px;
+}
+```
+
+{{EmbedLiveSample("simple-vertical", "", "350px")}}
 
 Los tres valores posibles para la propiedad [`writing-mode`](/es/docs/Web/CSS/writing-mode) son:
 
@@ -61,7 +78,44 @@ Ya hemos visto el diseño en bloque y lineal, y el hecho de que algunas cosas se
 
 Con el siguiente ejemplo quedará más claro. Si tienes dos cajas que contengan un `heading` y un `paragraph`. La primera usa `writing-mode: horizontal-tb`, un modo de escritura horizontal y desde la parte superior de la página a la base. La segunda usa `writing-mode: vertical-rl`; este es un modo de escritura vertical y de derecha a izquierda.
 
-{{EmbedGHLiveSample("css-examples/learn/writing-modes/block-inline.html", '100%', 1200)}}
+```html live-sample___block-inline
+<div class="wrapper">
+  <div class="box horizontal">
+    <h2>Heading</h2>
+    <p>A paragraph demonstrating writing modes in CSS.</p>
+  </div>
+  <div class="box vertical">
+    <h2>Heading</h2>
+    <p>A paragraph demonstrating writing modes in CSS.</p>
+  </div>
+</div>
+```
+
+```css live-sample___block-inline
+body {
+  font-family: sans-serif;
+  height: 300px;
+}
+.wrapper {
+  display: flex;
+}
+
+.box {
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  margin: 10px;
+}
+
+.horizontal {
+  writing-mode: horizontal-tb;
+}
+
+.vertical {
+  writing-mode: vertical-rl;
+}
+```
+
+{{EmbedLiveSample("block-inline", "", "350px")}}
 
 Cuando cambiamos el modo de escritura, estamos cambiando que dirección es en bloque y cuál es lineal. En un modo de escritura `horizontal-tb` La direccion del bloque va de arriba abajo; en un modo de escritura `vertical-rl` el bloque corre de derecha a izquierda horizontalmente. De esta forma la **dimensión del bloque** es siempre la direccion en la que se muestran los bloques en el modo de escritura en uso. La **dimensión lineal**, es siempre la dirección en que fluye una frase.
 
@@ -85,7 +139,47 @@ La razón de hablar acerca de modos de escritura y dirección en este punto en t
 
 Vamos a echarle un vistzo a nuestras dos cajas de nuevo, una con el modo escritura `horizontal-tb` y otro con `vertical-rl`. Le hemos dado a estas dos cajas un {{cssxref("width")}}. Puedes ver que cuando la caja está en el modo de escritura vertical, aún tiene una anchura, y esto está causando que el texto se desborde.
 
-{{EmbedGHLiveSample("css-examples/learn/writing-modes/width.html", '100%', 1200)}}
+```html live-sample___width
+<div class="wrapper">
+  <div class="box horizontal">
+    <h2>Heading</h2>
+    <p>A paragraph demonstrating writing modes in CSS.</p>
+    <p>These boxes have a width.</p>
+  </div>
+  <div class="box vertical">
+    <h2>Heading</h2>
+    <p>A paragraph demonstrating writing modes in CSS.</p>
+    <p>These boxes have a width.</p>
+  </div>
+</div>
+```
+
+```css live-sample___width
+body {
+  font-family: sans-serif;
+  height: 300px;
+}
+.wrapper {
+  display: flex;
+}
+
+.box {
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  margin: 10px;
+  width: 100px;
+}
+
+.horizontal {
+  writing-mode: horizontal-tb;
+}
+
+.vertical {
+  writing-mode: vertical-rl;
+}
+```
+
+{{EmbedLiveSample("width", "", "350px")}}
 
 Lo que nosotros realmente queremos en este escenario, es esencialmente intercambiar altura y anchura junto con el modo de escritura. Cuando estamos en el modo de escritura vertical, queremos que la caja se expanda en la dimensión del bloque así como lo hace en el modo horizontal.
 
@@ -93,7 +187,43 @@ Para hacerlo más fácil, CSS ha desarrollado recientemente un conjunto de propi
 
 La propiedad asignada a `width` cuando está en el modo de escritura horizontal se llama {{cssxref("inline-size")}}, se refiere al tamaño en la dimensión inline. La propiedad para `height` se llama {{cssxref("block-size")}} y es el tamaño en la dimensión de bloque. Puedes ver como funciona en el ejemplo de abajo, donde reemplazamos `width` con `inline-size`.
 
-{{EmbedGHLiveSample("css-examples/learn/writing-modes/inline-size.html", '100%', 1200)}}
+```html live-sample___inline-size
+<div class="wrapper">
+  <div class="box horizontal">
+    <h2>Heading</h2>
+    <p>A paragraph demonstrating writing modes in CSS.</p>
+    <p>These boxes have inline-size.</p>
+  </div>
+  <div class="box vertical">
+    <h2>Heading</h2>
+    <p>A paragraph demonstrating writing modes in CSS.</p>
+    <p>These boxes have inline-size.</p>
+  </div>
+</div>
+```
+
+```css live-sample___inline-size
+.wrapper {
+  display: flex;
+}
+
+.box {
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  margin: 10px;
+  inline-size: 100px;
+}
+
+.horizontal {
+  writing-mode: horizontal-tb;
+}
+
+.vertical {
+  writing-mode: vertical-rl;
+}
+```
+
+{{EmbedLiveSample("inline-size", "", "300px")}}
 
 ### Propiedades lógicas `margin`, `border` y `padding`
 
@@ -109,7 +239,57 @@ Puedes ver una comparación entre las propiedades físicas y lógicas a continua
 
 **También puedes ver que el {{htmlelement("h2")}} tiene un `border-bottom` negro. ¿Puedes averiguar como hacer que el borde inferior siempre esté debajo del texto en ambos modos de escritura?**
 
-{{EmbedGHLiveSample("css-examples/learn/writing-modes/logical-mbp.html", '100%', 1200)}}
+```html live-sample___logical-mbp
+<div class="wrapper">
+  <div class="box physical">
+    <h2>Physical Properties</h2>
+    <p>A paragraph demonstrating logical properties in CSS.</p>
+  </div>
+  <div class="box logical">
+    <h2>Logical Properties</h2>
+    <p>A paragraph demonstrating logical properties in CSS.</p>
+  </div>
+</div>
+```
+
+```css live-sample___logical-mbp
+.wrapper {
+  display: flex;
+  border: 5px solid #ccc;
+}
+
+.box {
+  margin-right: 30px;
+  inline-size: 200px;
+  writing-mode: horizontal-tb;
+}
+
+.logical {
+  margin-block-start: 20px;
+  padding-inline-end: 2em;
+  padding-block-start: 2px;
+  border-block-start: 5px solid pink;
+  border-inline-end: 10px dotted rebeccapurple;
+  border-block-end: 1em double orange;
+  border-inline-start: 1px solid black;
+}
+
+.physical {
+  margin-top: 20px;
+  padding-right: 2em;
+  padding-top: 2px;
+  border-top: 5px solid pink;
+  border-right: 10px dotted rebeccapurple;
+  border-bottom: 1em double orange;
+  border-left: 1px solid black;
+}
+
+h2 {
+  border-bottom: 5px solid black;
+}
+```
+
+{{EmbedLiveSample("logical-mbp", "", "200px")}}
 
 Existe un gran número de propiedades cuando consideras cada uno de los bordes que puedes hacer a mano, y puedes ver todas las propiedades asignadas en la página de MDN para [propiedades Lógicas y Valores](/es/docs/Web/CSS/CSS_logical_properties_and_values)
 
@@ -121,7 +301,41 @@ Por ejemplo, puedes hacer que una imagen flote a la izquierda para hacer que el 
 
 **Cambia el modo de escritura en este ejemplo a `vertical-rl` para ver que sucede con la imagen. Cambia `inline-start` por `inline-end` para cambiar el modo en que flota.**
 
-{{EmbedGHLiveSample("css-examples/learn/writing-modes/float.html", '100%', 1200)}}
+```html live-sample___float
+<div class="wrapper">
+  <div class="box logical">
+    <img
+      alt="star"
+      src="https://mdn.github.io/shared-assets/images/examples/big-star.png" />
+    <p>
+      This box uses logical properties. The star image has been floated
+      inline-start, it also has a margin on the inline-end and block-end.
+    </p>
+  </div>
+</div>
+```
+
+```css live-sample___float
+.wrapper {
+  display: flex;
+}
+
+.box {
+  margin: 10px;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  inline-size: 200px;
+  writing-mode: horizontal-tb;
+}
+
+img {
+  float: inline-start;
+  margin-inline-end: 10px;
+  margin-block-end: 10px;
+}
+```
+
+{{EmbedLiveSample("float", "", "200px")}}
 
 Aquí también estamos usando valores lógicos de margen para asegurar que el margen está en el sitio correcto sin importar que modo de escritura es.
 

@@ -25,7 +25,42 @@ Para distribuir el espacio entre o alrededor de los elementos, usamos las propie
 
 En el siguiente ejemplo en vivo, mostramos los elementos en su tamaño natural y utilizando `justify-content: space-between` crea cantidades iguales de espacio entre los elementos. Puede cambiar la forma en que se distribuye el espacio utilizando el valor `space-around`, o, donde sea compatible, `space-evenly`. También puede usar `flex-start` para colocar el espacio al final de los elementos, `flex-end` para colocarlo delante de ellos, o `center` para centrar los elementos de navegación.
 
-{{EmbedGHLiveSample("css-examples/flexbox/use-cases/navigation.html", '100%', 550)}}
+```html live-sample___navigation
+<nav>
+  <ul>
+    <li><a href="#">Page 1</a></li>
+    <li><a href="#">Page 2</a></li>
+    <li><a href="#">Page 3 is longer</a></li>
+    <li><a href="#">Page 4</a></li>
+  </ul>
+</nav>
+```
+
+```css live-sample___navigation
+nav {
+  border: 2px solid #eeeeee;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  padding: 10px;
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+```
+
+{{EmbedLiveSample("navigation")}}
 
 ### Espacio distribuido dentro de los elementos
 
@@ -35,7 +70,44 @@ Si quisiera que todos mis elementos de navegación tuvieran el mismo ancho, ento
 
 En el ejemplo en vivo a continuación, intente cambiar `flex: auto` a `flex: 1`. Esta es la abreviatura de `flex: 1 1 0` y hace que todos los elementos se vuelvan del mismo ancho, ya que están trabajando desde una flex-basis de 0 permitiendo que todo el espacio sea distribuido uniformemente.
 
-{{EmbedGHLiveSample("css-examples/flexbox/use-cases/navigation-flex.html", '100%', 550)}}
+```html live-sample___navigation-flex
+<nav>
+  <ul>
+    <li><a href="#">Page 1</a></li>
+    <li><a href="#">Page 2</a></li>
+    <li><a href="#">Page 3 is longer</a></li>
+    <li><a href="#">Page 4</a></li>
+  </ul>
+</nav>
+```
+
+```css live-sample___navigation-flex
+nav {
+  border: 2px solid #eeeeee;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  padding: 10px;
+  display: block;
+}
+
+nav li {
+  flex: auto;
+}
+```
+
+{{EmbedLiveSample("navigation-flex")}}
 
 ## Navegación dividida
 
@@ -45,7 +117,46 @@ Aquí estamos utilizando la técnica de márgenes automáticos descrita en [Uso 
 
 También en este ejemplo, estamos utilizando márgenes en los elementos flexibles para crear un espacio entre los elementos, y un margen negativo en el contenedor para que los elementos aún permanezcan a nivel con los bordes derecho e izquierdo. Hasta que las propiedades `gap` de la especificación de alineación de caja sea implementada en flexbox, debemos usar márgenes de esta manera si queremos crear un margen entre los elementos.
 
-{{EmbedGHLiveSample("css-examples/flexbox/use-cases/split-navigation.html", '100%', 550)}}
+```html live-sample___split-navigation
+<nav>
+  <ul>
+    <li><a href="#">Page 1</a></li>
+    <li><a href="#">Page 2</a></li>
+    <li><a href="#">Page 3 is longer</a></li>
+    <li class="push-right"><a href="#">Page 4</a></li>
+  </ul>
+</nav>
+```
+
+```css live-sample___split-navigation
+nav {
+  border: 2px solid #eeeeee;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  padding: 10px;
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.push-right {
+  margin-left: auto;
+}
+```
+
+{{EmbedLiveSample("split-navigation")}}
 
 ## Centrar elemento
 
@@ -53,7 +164,31 @@ Antes de flexbox, los desarrolladores bromeaban con que el problema más difíci
 
 Puedes jugar con la alineación, alineando el elemento con el inicio con `flex-start` o al final con `flex-end`.
 
-{{EmbedGHLiveSample("css-examples/flexbox/use-cases/center.html", '100%', 700)}}
+```html live-sample___center
+<div class="box">
+  <div></div>
+</div>
+```
+
+```css live-sample___center
+.box {
+  height: 300px;
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box div {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  width: 100px;
+  height: 100px;
+}
+```
+
+{{EmbedLiveSample("center", "", "320px")}}
 
 Es posible que en el futuro no tengamos que crear un contenedor en un contenedor flexible solo para centrar un solo elemento, ya que las propiedades de Alineación de cuadro se implementarán en última instancia en el diseño del bloque. Por ahora, sin embargo, si necesita centrar correctamente una cosa dentro de otra, flexbox es la forma de hacerlo. Como en el ejemplo anterior, convierta un contenedor en un contenedor flexible y luego utilice `align-items` en el elemento principal o apunte el propio elemento de flexión con `align-self`.
 
@@ -65,7 +200,56 @@ Ya sea que use flexbox o CSS Grid para diseñar una lista de componentes de tarj
 
 Flexbox puede resolver esto. Hacemos de la tarjeta un contenedor flexible, con `{{cssxref ("flex-direction")}} :column`. A continuación, configuramos el área de contenido con `flex: 1`, que es la abreviatura de `flex: 1 1 0`; el elemento puede crecer y reducirse desde una base flexible de 0. Como este es el único elemento que puede crecer, ocupa todo el espacio disponible en el contenedor flexible y empuja el pie de página hacia abajo. Si elimina la propiedad `flex` del ejemplo en vivo, verá cómo el pie de página se mueve hacia arriba para sentarse directamente debajo del contenido.
 
-{{EmbedGHLiveSample("css-examples/flexbox/use-cases/cards.html", '100%', 800)}}
+```html live-sample___cards
+<div class="cards">
+  <div class="card">
+    <div class="content">
+      <p>This card doesn't have much content.</p>
+    </div>
+    <footer>Card footer</footer>
+  </div>
+  <div class="card">
+    <div class="content">
+      <p>
+        This card has a lot more content which means that it defines the height
+        of the container the cards are in. I've laid the cards out using grid
+        layout, so the cards themselves will stretch to the same height.
+      </p>
+    </div>
+    <footer>Card footer</footer>
+  </div>
+</div>
+```
+
+```css live-sample___cards
+body {
+  font-family: sans-serif;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+
+.card {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card .content {
+  padding: 10px;
+  flex: 1 1 auto;
+}
+
+.card footer {
+  background-color: rgb(96 139 168 / 0.2);
+  padding: 10px;
+}
+```
+
+{{EmbedLiveSample("cards", "", "280px")}}
 
 ## Objetos multimedia
 
@@ -75,7 +259,39 @@ Vemos este patrón en todas partes, usado para comentarios, y en cualquier lugar
 
 En el ejemplo en vivo a continuación puedes ver nuestro objeto multimedia. He usado las propiedades de alineación para alinear los elementos en el eje transversal con `flex-start`, y luego establezco el elemento flex `.content` a `flex: 1`. Al igual que nuestra columna del patrón de la tarjeta de diseño anterior, usar `flex: 1` significa que esta parte de la tarjeta puede crecer.
 
-{{EmbedGHLiveSample("css-examples/flexbox/use-cases/media.html", '100%', 600)}}
+```html live-sample___media
+<div class="media">
+  <div class="image">
+    <img
+      alt="A colorful balloon against a blue sky"
+      src="https://mdn.github.io/shared-assets/images/examples/balloon.jpg" />
+  </div>
+  <div class="content">
+    This is the content of my media object. Items directly inside the flex
+    container will be aligned to flex-start.
+  </div>
+</div>
+```
+
+```css live-sample___media
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.media {
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+  align-items: flex-start;
+}
+
+.media .content {
+  flex: 1;
+  padding: 10px;
+}
+```
+
+{{EmbedLiveSample("media", "", "320px")}}
 
 Algunas de las cosas que podría querer probar en este ejemplo en vivo se relacionan con las diferentes formas en que podría desear restringir el objeto multimedia en su diseño.
 
@@ -117,7 +333,43 @@ También puede dar a cada lado diferentes factores {{cssxref ("flex-grow")}}, po
 
 Para cambiar la visualización del objeto multimedia de modo que la imagen esté a la derecha y el contenido a la izquierda, podemos usar la propiedad `flex-direction` configurada para `row-reverse`. El objeto multimedia ahora se muestra al revés. He logrado esto en el ejemplo en vivo agregando una clase `flipped` junto con la clase existente `.media`. Esto significa que puede ver cómo cambia la pantalla eliminando esa clase del html.
 
-{{EmbedGHLiveSample("css-examples/flexbox/use-cases/media-flipped.html", '100%', 650)}}
+```html live-sample___media-flipped
+<div class="media flipped">
+  <div class="image">
+    <img
+      alt="A colorful balloon against a blue sky"
+      src="https://mdn.github.io/shared-assets/images/examples/balloon.jpg" />
+  </div>
+  <div class="content">
+    This is the content of my media object. Items directly inside the flex
+    container will be aligned to flex-start.
+  </div>
+</div>
+```
+
+```css live-sample___media-flipped
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.media {
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+  align-items: flex-start;
+}
+
+.flipped {
+  flex-direction: row-reverse;
+}
+
+.media .content {
+  flex: 1;
+  padding: 10px;
+}
+```
+
+{{EmbedLiveSample("media-flipped", "", "320px")}}
 
 ## Controles de formulario
 
@@ -127,7 +379,45 @@ Flexbox es particularmente útil cuando se trata de estilos de controles de form
 
 Puede agregar una etiqueta o un icono a la izquierda tan fácilmente como hicimos clic en el botón derecho. He añadido una etiqueta y aparte, algunos estilos de color de fondo, no tuve que cambiar el diseño. El campo de entrada extensible ahora tiene un poco menos de espacio para actuar, pero utiliza el espacio izquierdo después que se representaron los dos elementos.
 
-{{EmbedGHLiveSample("css-examples/flexbox/use-cases/label-input-button.html", '100%', 550)}}
+```html live-sample___label-input-button
+<form class="example">
+  <div class="wrapper">
+    <label for="text">Label</label>
+    <input id="text" type="text" />
+    <input type="submit" value="Send" />
+  </div>
+</form>
+```
+
+```css live-sample___label-input-button
+* {
+  font: 1.1em sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  border: 1px solid rgb(96 139 168);
+}
+.wrapper > * {
+  padding: 10px;
+  border: none;
+  color: #fff;
+}
+.wrapper > input[type="text"] {
+  background-color: rgb(96 139 168 / 0.5);
+  border-right: 1px solid rgb(96 139 168);
+  flex: 1 1 auto;
+}
+.wrapper input[type="submit"] {
+  background-color: rgb(96 139 168);
+  color: #fff;
+}
+.wrapper label {
+  background-color: #666;
+}
+```
+
+{{EmbedLiveSample("label-input-button")}}
 
 Patrones como este pueden hacer que sea mucho más fácil crear una biblioteca de elementos de formulario para su diseño, que se adapte fácilmente a los elementos adicionales que se agregan. Está aprovechando la flexibilidad de flexbox al mezclar elementos que no crecen con los que lo hacen.
 
