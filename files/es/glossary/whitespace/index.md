@@ -3,8 +3,6 @@ title: Espacio en blanco
 slug: Glossary/Whitespace
 ---
 
-{{GlossarySidebar}}
-
 El **espacio en blanco** es un conjunto de {{Glossary("Caracter", "caracteres")}} que se utiliza para mostrar espacios horizontales o verticales entre otros caracteres. A menudo se utilizan para separar fragmentos en {{Glossary("HTML")}}, {{Glossary("CSS")}}, {{Glossary("JavaScript")}} y otros lenguajes informáticos.Los caracteres de espacio en blanco y su uso varía de un lenguaje a otro.
 
 ## En HTML

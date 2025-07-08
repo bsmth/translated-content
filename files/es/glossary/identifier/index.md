@@ -3,8 +3,6 @@ title: Identificador
 slug: Glossary/Identifier
 ---
 
-{{GlossarySidebar}}
-
 Un **Identificador** es una secuencia de caracteres en el código que identifica una {{Glossary("Variable")}}, {{Glossary("Function", "función")}} o {{Glossary("Property", "propiedad")}}.
 
 En {{Glossary("JavaScript")}}, los identificadores distinguen entre mayúsculas y minúsculas y pueden contener letras {{Glossary("Unicode")}}, `$`, `_`, y dígitos (0-9), pero no puede comenzar con un dígito.

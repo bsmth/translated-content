@@ -3,8 +3,6 @@ title: Node
 slug: Glossary/Node
 ---
 
-{{GlossarySidebar}}
-
 El término **nodo** puede tener varios significados según el contexto. Puede referirse a:
 
 {{GlossaryDisambiguation}}

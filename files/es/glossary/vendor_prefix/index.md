@@ -3,8 +3,6 @@ title: Vendor Prefix
 slug: Glossary/Vendor_Prefix
 ---
 
-{{GlossarySidebar}}
-
 Los proveedores de navegadores a veces agregan prefijos a las propiedades de CSS experimentales o no estándar y las API de JavaScript, por lo que los desarrolladores pueden experimentar con nuevas ideas mientras que, en teoría, evitan que se confíe en sus experimentos y luego rompan el código de los desarrolladores web durante el proceso de estandarización. Los desarrolladores deben esperar para incluir la propiedad sin prefijar hasta que se estandarice el comportamiento del navegador.
 
 > [!NOTE]

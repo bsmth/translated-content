@@ -5,8 +5,6 @@ l10n:
   sourceCommit: 5b20f5f4265f988f80f513db0e4b35c7e0cd70dc
 ---
 
-{{GlossarySidebar}}
-
 La **medida de avance** es el espacio total que ocupa un glifo, ya sea horizontal o verticalmente, dependiendo de la orientación actual de escritura. Es igual a la distancia que recorre el cursor, colocado directamente delante y luego detrás del carácter.
 
 Este término se utiliza en la definición de varias unidades {{cssxref("&lt;length&gt;")}} en CSS.

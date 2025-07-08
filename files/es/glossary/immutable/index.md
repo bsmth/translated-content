@@ -3,8 +3,6 @@ title: Inmutable
 slug: Glossary/Immutable
 ---
 
-{{GlossarySidebar}}
-
 Un {{glossary("object", "objeto")}} inmutable es aquel cuyo contenido no se puede cambiar.Un objeto puede ser inmutable por varias razones, por ejemplo:
 
 - Para mejorar el rendimiento (al no haber planificados cambios futuros del objeto)
